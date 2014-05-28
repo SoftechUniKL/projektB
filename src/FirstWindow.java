@@ -1,3 +1,10 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,6 +27,11 @@ import javax.swing.JTextField;
 	JLabel wand4;
 	JLabel height;
 	JLabel Angabe;
+	
+	JButton calculate;
+	JCheckBox Top;
+	JCheckBox next;
+	
 		
 	public FirstWindow(){
 		getContentPane().setLayout(null);
@@ -72,15 +84,30 @@ import javax.swing.JTextField;
 		getContentPane().add(feld3);
 		getContentPane().add(feld4);
 		getContentPane().add(feld5);
+		
+		
+		JButton calculate = new JButton("Berechnen");
+		JCheckBox Top = new JCheckBox ("Decke streichen");
+		JCheckBox next = new JCheckBox ("Weiteren Raum hinzufügen", false);
+		
+		Top.setBounds(300, 300 , 200, 30);
+		next.setBounds(20, 400, 200, 30);
+		calculate.setBounds(20, 500, 200,30);
+		
+		add(Top);
+		add(next);
+		add(calculate);
+		
 		setVisible(true);
 		setSize(700, 700);
 		
 		
 		
 	}
-		
-		
+	
+	
 	}
+	
 		
 		
 		
