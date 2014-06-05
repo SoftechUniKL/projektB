@@ -1,28 +1,18 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.text.NumberFormat;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
+public class Frame2 extends JFrame {
 
-
-	public class FirstWindow extends JFrame {
-		
 	JTextField feld1;
 	JTextField feld2;
 	
 	JTextField feld3;
 	JTextField feld4;
 	JTextField feld5;
-	JTextField Ergebnis;
 	
 	JLabel wand1;
 	JLabel wand2;
@@ -31,28 +21,28 @@ import javax.swing.JTextField;
 	JLabel height;
 	JLabel Angabe;
 	
-	
 	JButton calculate;
 	JCheckBox Top;
 	JButton next;
-
+	
+	
+	public Frame2() {
 		
-	public FirstWindow(){
-		getContentPane().setLayout(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		InitializeWindow();
-		
-		
+	
+	getContentPane().setLayout(null);
+	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	InitializeNextWindow();
+	
 	
 	}
 	
-	public void InitializeWindow() {
+	public void InitializeNextWindow(){
 		feld1 = new JTextField();
 		feld2 = new JTextField();
 		feld3 = new JTextField();
 		feld4 = new JTextField();
 		feld5 = new JTextField();
-		Ergebnis= new JTextField();
+		
 	
 		
 		Angabe = new JLabel("Bitte füllen Sie folgende Angaben aus ");
@@ -71,28 +61,23 @@ import javax.swing.JTextField;
 		wand4.setBounds(300, 170, 80 , 30);
 		height.setBounds(20, 270 , 90 , 30);
 		
-		
 		add(wand1);
 		add(wand2);
 		add(wand3);
 		add(wand4);
 		add(height);
-	
+		
 		
 		feld1.setBounds(20, 100 , 200, 30);
 		feld2.setBounds(300, 100, 200, 30);
 		feld3.setBounds( 20, 200, 200, 30);
 		feld4.setBounds( 300, 200, 200 ,30);
 		feld5.setBounds(20, 300, 200, 30);
-		Ergebnis.setBounds(300, 500, 200, 30);
-		   
 		getContentPane().add(feld1);
 		getContentPane().add(feld2);
 		getContentPane().add(feld3);
 		getContentPane().add(feld4);
 		getContentPane().add(feld5);
-		getContentPane().add(Ergebnis);
-	
 		
 		JButton calculate = new JButton("Berechnen");
 		JCheckBox Top = new JCheckBox ("Decke streichen");
@@ -108,52 +93,7 @@ import javax.swing.JTextField;
 		
 		setVisible(true);
 		setSize(700, 700);
-		setTitle("Raum 1");
-		
-		   calculate.addActionListener(new ActionListener () {
-			   public void actionPerformed(ActionEvent e) {
-				   
-				   double m1 = 0;
-				   double h= 0;
-				   double result = 0;
-				   
-				 try {
-					 m1 = Double.parseDouble(feld1.getText());
-				 
-				   h = Double.parseDouble(feld5.getText());
-				   result = m1 * h;
-				   String r = String.valueOf(result);
-				   Ergebnis.setText(r);
-				
-				 } catch (Exception NumberFormatException) {
-					 
-					 Ergebnis.setText("Falsches Format");
-				 }
-			   }
-		   });
-		
+		setTitle("Zusätzlicher Raum");
+	}
 
-		
-		next.addActionListener(new ActionListener () {
-			public void actionPerformed(ActionEvent e) {
-				Frame2 F2 = new Frame2();
-				setVisible(true);
-				}
-				
-			
-		});
-	
-		
 	}
-	}
-	
-		
-		
-		
-		
-	
-	
-			
-			
-		
-	
