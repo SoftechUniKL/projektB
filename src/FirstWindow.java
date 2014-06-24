@@ -121,8 +121,10 @@ public class FirstWindow extends JFrame {
 		    m3 = Double.parseDouble(feld3.getText());
 		    m4 = Double.parseDouble(feld4.getText());
 		    h = Double.parseDouble(feld5.getText());
+		    
+		    Calculate sqm = new Calculate(m1, m2 , m3 , m4 , h);
 
-		    result1 = m1 * h;
+		   /* result1 = m1 * h;
 		    result2 = m2 * h;
 		    result3 = m3 * h;
 		    result4 = m4 * h;
@@ -143,7 +145,7 @@ public class FirstWindow extends JFrame {
 		    Ergebnis.setText("Falsches Format");
 		}
 	    }
-	});
+	});*/
 
 	// Öffnet neues Fenster
 	next.addActionListener(new ActionListener() {
