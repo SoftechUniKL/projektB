@@ -24,6 +24,7 @@ public class FirstWindow extends JFrame {
     JLabel height;
     JLabel Angabe;
     JLabel paint;
+    Frame2 f2 = new Frame2(this);;
 
     double m1 = 0;
     double m2 = 0;
@@ -111,6 +112,7 @@ public class FirstWindow extends JFrame {
 	setTitle("Raum 1");
 
 	// Berechnet Eingaben von "Wand1" und "Höhe"
+
 	calculate.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 
@@ -146,10 +148,12 @@ public class FirstWindow extends JFrame {
 	});
 
 	// Öffnet neues Fenster
+
 	next.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
-		Frame2 F2 = new Frame2();
-		setVisible(true);
+		f2.setVisible(true);
+		setVisible(false);
+
 	    }
 
 	});

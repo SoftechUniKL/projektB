@@ -9,10 +9,10 @@ import javax.swing.JTextField;
 
 public class Frame2 extends JFrame {
 
-    JTextField feld1;
-    JTextField feld2, Ergebnis;
+    private JTextField feld1;
+    private JTextField feld2, Ergebnis;
 
-    JTextField feld3;
+    private JTextField feld3;
     JTextField feld4;
     JTextField feld5;
 
@@ -37,12 +37,26 @@ public class Frame2 extends JFrame {
     double result3 = 0;
     double result4 = 0;
 
-    public Frame2() {
+    FirstWindow first;
+
+    public Frame2(FirstWindow first) {
 
 	getContentPane().setLayout(null);
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	InitializeNextWindow();
+	this.first = first;
 
+    }
+
+    public void clear() {
+	this.feld1.setText("");
+	this.feld2.setText("");
+	this.feld3.setText("");
+	this.feld4.setText("");
+	this.Ergebnis.setText("");
+
+	setVisible(false);
+	first.setVisible(true);
     }
 
     public void InitializeNextWindow() {
@@ -93,7 +107,6 @@ public class Frame2 extends JFrame {
 
 	Top.setBounds(300, 300, 200, 30);
 	calculate.setBounds(20, 500, 200, 30);
-
 	add(Top);
 	add(calculate);
 
@@ -128,8 +141,7 @@ public class Frame2 extends JFrame {
 
 		    String r = String.valueOf(result);
 		    Ergebnis.setText(r);
-
-		    dispose();
+		    clear();
 
 		} catch (Exception NumberFormatException) {
 
@@ -139,4 +151,5 @@ public class Frame2 extends JFrame {
 
 	});
     }
+
 }

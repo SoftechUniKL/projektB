@@ -1,4 +1,4 @@
-public class Calculate extends Frame2 {
+public class Calculate {
 
     double length1;
     double length2;
