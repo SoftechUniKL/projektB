@@ -100,7 +100,7 @@ public class Frame2 extends JFrame {
 	setVisible(true);
 	setSize(700, 700);
 	setTitle("Zusätzlicher Raum");
-
+	// Berechnet qm
 	calculate.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 
@@ -121,15 +121,18 @@ public class Frame2 extends JFrame {
 
 			result = result1 + result2 + result3 + result4
 				+ (m1 * m2);
+			Calculate calc = new Calculate(result);
 
 		    } else {
 			result = result1 + result2 + result3 + result4;
+			Calculate calc = new Calculate(result);
 		    }
 
 		    String r = String.valueOf(result);
 		    Ergebnis.setText(r);
 
 		    dispose();
+		    setVisible(true);
 
 		} catch (Exception NumberFormatException) {
 

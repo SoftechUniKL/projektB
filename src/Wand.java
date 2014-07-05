@@ -13,7 +13,7 @@ public class Wand extends Raum {
     }
 
     double flaeche() {
-	this.fläche = (this.hoehe * this.breite) - türFenster.fläche;
+	// this.fläche = (this.hoehe * this.breite) - türFenster.fläche;
 	/*
 	 * Wie greife ich auf alle WOMÖGLICHEN "kindobjekte" von wand zu? also
 	 * falls eine zu bestreichende Wand ein oder Mehrere(!) fenster hat- wie

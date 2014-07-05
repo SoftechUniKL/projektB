@@ -1,30 +1,19 @@
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class FirstWindow extends JFrame {
 
-    JTextField feld1;
-    JTextField feld2;
-
-    JTextField feld3;
-    JTextField feld4;
-    JTextField feld5;
-    JTextField Ergebnis;
-
-    JLabel wand1;
-    JLabel wand2;
-    JLabel wand3;
-    JLabel wand4;
-    JLabel height;
-    JLabel Angabe;
-    JLabel paint;
-
+    int clicked;
     double m1 = 0;
     double m2 = 0;
     double m3 = 0;
@@ -36,9 +25,12 @@ public class FirstWindow extends JFrame {
     double result3 = 0;
     double result4 = 0;
 
-    JButton calculate;
-    JCheckBox Top;
+    JLabel Angabe, flaeche, preis, menge;
+    JTextField price, sqm, liter;
     JButton next;
+    JRadioButton low, middle, high;
+    JPanel PreisKLasse;
+    JPanel color;
 
     public FirstWindow() {
 	getContentPane().setLayout(null);
@@ -48,108 +40,115 @@ public class FirstWindow extends JFrame {
     }
 
     public void InitializeWindow() {
-	feld1 = new JTextField();
-	feld2 = new JTextField();
-	feld3 = new JTextField();
-	feld4 = new JTextField();
-	feld5 = new JTextField();
-	Ergebnis = new JTextField();
 
+	flaeche = new JLabel("Gesamtfläche in qm:");
+	preis = new JLabel("Kostenvoranschlag:");
+	menge = new JLabel("Farbmenge in Liter:");
 	Angabe = new JLabel("Bitte füllen Sie folgende Angaben aus ");
+
 	Angabe.setBounds(10, 10, 250, 30);
+	flaeche.setBounds(20, 300, 200, 30);
+	menge.setBounds(250, 300, 200, 30);
+	preis.setBounds(480, 300, 200, 30);
+
+	add(preis);
+	add(menge);
+	add(flaeche);
 	add(Angabe);
 
-	wand1 = new JLabel("Wand 1 in m");
-	wand2 = new JLabel("Wand 2 in m");
-	wand3 = new JLabel("Wand 3 in m");
-	wand4 = new JLabel("Wand 4 in m");
-	height = new JLabel("Raumhöhe in m");
-	paint = new JLabel("Angaben für die Farbauswahl");
+	sqm = new JTextField();
+	liter = new JTextField();
+	price = new JTextField();
 
-	wand1.setBounds(20, 70, 80, 30);
-	wand2.setBounds(300, 70, 80, 30);
-	wand3.setBounds(20, 170, 80, 30);
-	wand4.setBounds(300, 170, 80, 30);
-	height.setBounds(20, 270, 90, 30);
-	paint.setBounds(10, 600, 250, 30);
+	price.setBounds(20, 330, 200, 30);
+	liter.setBounds(250, 330, 200, 30);
+	sqm.setBounds(480, 330, 200, 30);
 
-	add(wand1);
-	add(wand2);
-	add(wand3);
-	add(wand4);
-	add(height);
-	add(paint);
+	add(price);
+	add(sqm);
+	add(liter);
 
-	feld1.setBounds(20, 100, 200, 30);
-	feld2.setBounds(300, 100, 200, 30);
-	feld3.setBounds(20, 200, 200, 30);
-	feld4.setBounds(300, 200, 200, 30);
-	feld5.setBounds(20, 300, 200, 30);
-	Ergebnis.setBounds(300, 500, 200, 30);
+	// Preisklasse via Radiobutton auswählen
 
-	getContentPane().add(feld1);
-	getContentPane().add(feld2);
-	getContentPane().add(feld3);
-	getContentPane().add(feld4);
-	getContentPane().add(feld5);
-	getContentPane().add(Ergebnis);
+	low = new JRadioButton("Niedrige Preisklasse, c.a 0.30 Euro/qm", true);
+	middle = new JRadioButton("Mittlere Preisklasse, c.a 0.50 Euro/qm",
+		true);
+	high = new JRadioButton("Hohe Preisklasse, c.a 0.60 Euro/qm", true);
 
-	JButton calculate = new JButton("Berechnen");
-	final JCheckBox Top = new JCheckBox("Decke streichen");
-	JButton next = new JButton("Weiteren Raum hinzufügen");
+	ButtonGroup PriceGroup = new ButtonGroup();
+	PriceGroup.add(low);
+	PriceGroup.add(middle);
+	PriceGroup.add(high);
 
-	Top.setBounds(300, 300, 200, 30);
-	next.setBounds(20, 400, 200, 30);
-	calculate.setBounds(20, 500, 200, 30);
+	PreisKLasse = new JPanel();
+	PreisKLasse.add(low);
+	PreisKLasse.add(middle);
+	PreisKLasse.add(high);
+	PreisKLasse.setLayout(new GridLayout(3, 1));
+	PreisKLasse.setBorder(BorderFactory.createTitledBorder(
+		BorderFactory.createRaisedSoftBevelBorder(),
+		"Preisklasse wählen"));
+	PreisKLasse.setBounds(250, 70, 300, 200);
+	getContentPane().add(PreisKLasse);
 
-	add(Top);
+	// Farbauswahl
+	color = new JPanel();
+	color.setBorder(BorderFactory.createTitledBorder(
+		BorderFactory.createRaisedSoftBevelBorder(), "Farbauswahl"));
+	color.setBounds(600, 70, 300, 200);
+	getContentPane().add(color);
+
+	JButton next = new JButton("Raum hinzufügen");
+
+	next.setBounds(20, 150, 200, 30);
+
 	add(next);
-	add(calculate);
 
 	setVisible(true);
-	setSize(700, 700);
+	setSize(1000, 500);
 	setTitle("Raum 1");
 
 	// Berechnet Eingaben von "Wand1" und "Höhe"
-	calculate.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
+	/*
+	 * calculate.addActionListener(new ActionListener() { public void
+	 * actionPerformed(ActionEvent e) {
+	 * 
+	 * try {
+	 * 
+	 * m1 = Double.parseDouble(feld1.getText()); m2 =
+	 * Double.parseDouble(feld2.getText()); m3 =
+	 * Double.parseDouble(feld3.getText()); m4 =
+	 * Double.parseDouble(feld4.getText()); h =
+	 * Double.parseDouble(feld5.getText());
+	 * 
+	 * result1 = m1 * h; result2 = m2 * h; result3 = m3 * h; result4 = m4 *
+	 * h;
+	 * 
+	 * if (Top.isSelected()) {
+	 * 
+	 * result = result1 + result2 + result3 + result4 + (m1 * m2);
+	 * 
+	 * } else { result = result1 + result2 + result3 + result4;
+	 * 
+	 * }
+	 * 
+	 * String r = String.valueOf(result); Ergebnis.setText(r);
+	 * 
+	 * } catch (Exception NumberFormatException) {
+	 * 
+	 * Ergebnis.setText("Falsches Format"); } }
+	 * 
+	 * });
+	 */
 
-		try {
-
-		    m1 = Double.parseDouble(feld1.getText());
-		    m2 = Double.parseDouble(feld2.getText());
-		    m3 = Double.parseDouble(feld3.getText());
-		    m4 = Double.parseDouble(feld4.getText());
-		    h = Double.parseDouble(feld5.getText());
-
-		    result1 = m1 * h;
-		    result2 = m2 * h;
-		    result3 = m3 * h;
-		    result4 = m4 * h;
-
-		    if (Top.isSelected()) {
-
-			result = result1 + result2 + result3 + result4
-				+ (m1 * m2);
-		    } else {
-			result = result1 + result2 + result3 + result4;
-		    }
-
-		    String r = String.valueOf(result);
-		    Ergebnis.setText(r);
-
-		} catch (Exception NumberFormatException) {
-
-		    Ergebnis.setText("Falsches Format");
-		}
-	    }
-	});
-
-	// Öffnet neues Fenster
+	// Öffnet neues Fenster und zählt die Anzahl neuer Fenster
 	next.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
+		clicked++;
+		System.out.println(clicked);
 		Frame2 F2 = new Frame2();
 		setVisible(true);
+		F2.toFront();
 	    }
 
 	});
