@@ -25,6 +25,7 @@ public class FirstWindow extends JFrame {
     double result3 = 0;
     double result4 = 0;
     Calculate calc = new Calculate();
+    Calculate calc2 = new Calculate();
 
     JLabel Angabe, flaeche, preis, menge;
     JTextField price, sqm, liter;
@@ -150,6 +151,10 @@ public class FirstWindow extends JFrame {
 		    clicked++;
 		}
 		System.out.println(clicked);
+		calc.addResult(5);
+		System.out.println("Ergebnis von calc:" + calc.getResult());
+		calc2.addResult(3);
+		System.out.println("Ergebnis von calc('2'):" + calc.getResult());
 
 		Frame2 F2 = new Frame2();
 		// setVisible(false);

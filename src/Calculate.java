@@ -1,5 +1,5 @@
 public class Calculate {
-    double Ergebnis = (double) -1;
+    static double Ergebnis = (double) -1;
 
     // Empfängt das Ergebnis aus Frame2
     Calculate() {
@@ -12,8 +12,12 @@ public class Calculate {
 
     }
 
-    public double getResult() {
-	return this.Ergebnis;
+    public static double getResult() {
+	return Ergebnis;
+    }
+
+    public static void addResult(double result) {
+	Ergebnis += result;
     }
 
 }
