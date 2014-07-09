@@ -1,8 +1,6 @@
 public class Calculate {
     static double Ergebnis = (double) -1;
 
-    static double Ergebnis;
-
     // Empfängt das Ergebnis aus Frame2
     Calculate() {
 
@@ -11,6 +9,7 @@ public class Calculate {
     Calculate(double result) {
 
 	this.Ergebnis = result;
+	System.out.println(Ergebnis);
 
     }
 
@@ -18,13 +17,8 @@ public class Calculate {
 	return Ergebnis;
     }
 
-<<<<<<< HEAD
-	System.out.println(Ergebnis);
-=======
     public static void addResult(double result) {
 	Ergebnis += result;
     }
->>>>>>> origin/master
 
-    }
 }
