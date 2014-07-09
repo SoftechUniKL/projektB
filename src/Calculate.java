@@ -1,24 +1,29 @@
 public class Calculate {
-    static double Ergebnis = (double) -1;
+    static double fläche;
+    static double farbmenge;
 
-    // Empfängt das Ergebnis aus Frame2
+    // preis?
+    double preis;
+
+    // Statische Klassenvariablen
+    static double endpreis;
+    static double gesamtfläche;
+
+    // Konstruktor
     Calculate() {
 
     }
 
-    Calculate(double result) {
-
-	this.Ergebnis = result;
-	System.out.println(Ergebnis);
-
+    public static double getFläche() {
+	return fläche;
     }
 
-    public static double getResult() {
-	return Ergebnis;
+    public static void setFläche(double area) {
+	fläche = area;
     }
 
-    public static void addResult(double result) {
-	Ergebnis += result;
+    public static void addFläche(double area) {
+	fläche += area;
     }
 
 }

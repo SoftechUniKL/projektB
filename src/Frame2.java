@@ -123,14 +123,14 @@ public class Frame2 extends JFrame {
 
 			    result = result1 + result2 + result3 + result4
 				    + (m1 * m2);
-			    Calculate calc = new Calculate(result);
+			    Calculate.addFläche(result);
 
 			} else {
 			    result = result1 + result2 + result3 + result4;
-			    Calculate calc = new Calculate(result);
+			    Calculate.addFläche(result);
 			}
+		    String r = String.valueOf(Calculate.getFläche());
 
-		    String r = String.valueOf(result);
 		    Ergebnis.setText(r);
 
 		    dispose();
