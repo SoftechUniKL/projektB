@@ -24,6 +24,8 @@ public class FirstWindow extends JFrame {
     double result2 = 0;
     double result3 = 0;
     double result4 = 0;
+    Calculate calc = new Calculate();
+    Calculate calc2 = new Calculate();
 
     JLabel Angabe, flaeche, preis, menge;
     JTextField price, sqm, liter;
@@ -144,11 +146,19 @@ public class FirstWindow extends JFrame {
 	// Öffnet neues Fenster und zählt die Anzahl neuer Fenster
 	next.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
-		clicked++;
+		// if(Ergebnis =anders) dann clicked ++
+		if (Double.compare(calc.getResult(), -1) != 0) {
+		    clicked++;
+		}
 		System.out.println(clicked);
+		calc.addResult(5);
+		System.out.println("Ergebnis von calc:" + calc.getResult());
+		calc2.addResult(3);
+		System.out.println("Ergebnis von calc('2'):" + calc.getResult());
+
 		Frame2 F2 = new Frame2();
-		setVisible(true);
-		F2.toFront();
+		// setVisible(false);
+		// F2.toFront();
 	    }
 
 	});
