@@ -24,8 +24,6 @@ public class FirstWindow extends JFrame {
     double result2 = 0;
     double result3 = 0;
     double result4 = 0;
-    Calculate calc = new Calculate();
-    Calculate calc2 = new Calculate();
 
     JLabel Angabe, flaeche, preis, menge;
     JTextField price, sqm, liter;
@@ -110,51 +108,14 @@ public class FirstWindow extends JFrame {
 	setSize(1000, 500);
 	setTitle("Raum 1");
 
-	// Berechnet Eingaben von "Wand1" und "Höhe"
-	/*
-	 * calculate.addActionListener(new ActionListener() { public void
-	 * actionPerformed(ActionEvent e) {
-	 * 
-	 * try {
-	 * 
-	 * m1 = Double.parseDouble(feld1.getText()); m2 =
-	 * Double.parseDouble(feld2.getText()); m3 =
-	 * Double.parseDouble(feld3.getText()); m4 =
-	 * Double.parseDouble(feld4.getText()); h =
-	 * Double.parseDouble(feld5.getText());
-	 * 
-	 * result1 = m1 * h; result2 = m2 * h; result3 = m3 * h; result4 = m4 *
-	 * h;
-	 * 
-	 * if (Top.isSelected()) {
-	 * 
-	 * result = result1 + result2 + result3 + result4 + (m1 * m2);
-	 * 
-	 * } else { result = result1 + result2 + result3 + result4;
-	 * 
-	 * }
-	 * 
-	 * String r = String.valueOf(result); Ergebnis.setText(r);
-	 * 
-	 * } catch (Exception NumberFormatException) {
-	 * 
-	 * Ergebnis.setText("Falsches Format"); } }
-	 * 
-	 * });
-	 */
-
 	// Öffnet neues Fenster und zählt die Anzahl neuer Fenster
 	next.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		// if(Ergebnis =anders) dann clicked ++
-		if (Double.compare(calc.getResult(), -1) != 0) {
-		    clicked++;
-		}
+
+		clicked++;
+
 		System.out.println(clicked);
-		calc.addResult(5);
-		System.out.println("Ergebnis von calc:" + calc.getResult());
-		calc2.addResult(3);
-		System.out.println("Ergebnis von calc('2'):" + calc.getResult());
 
 		Frame2 F2 = new Frame2();
 		// setVisible(false);
