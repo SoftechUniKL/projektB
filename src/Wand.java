@@ -1,4 +1,4 @@
-public class Wand extends Raum {
+public class Wand {
     double hoehe;
     double breite;
     double fläche;
