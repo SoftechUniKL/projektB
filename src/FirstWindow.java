@@ -106,7 +106,7 @@ public class FirstWindow extends JFrame {
 
 	setVisible(true);
 	setSize(1000, 500);
-	setTitle("Raum 1");
+	setTitle("");
 
 	// Berechnet Eingaben von "Wand1" und "Höhe"
 	/*

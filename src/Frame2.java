@@ -99,7 +99,7 @@ public class Frame2 extends JFrame {
 
 	setVisible(true);
 	setSize(700, 700);
-	setTitle("Zusätzlicher Raum");
+	setTitle("Angaben zum Raum");
 	// Berechnet qm
 	calculate.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
@@ -117,16 +117,17 @@ public class Frame2 extends JFrame {
 		    result3 = m3 * h;
 		    result4 = m4 * h;
 
-		    if (Top.isSelected()) {
+		    for (int i = 0; i < 5; i++)
+			if (Top.isSelected()) {
 
-			result = result1 + result2 + result3 + result4
-				+ (m1 * m2);
-			Calculate calc = new Calculate(result);
+			    result = result1 + result2 + result3 + result4
+				    + (m1 * m2);
+			    Calculate calc = new Calculate(result);
 
-		    } else {
-			result = result1 + result2 + result3 + result4;
-			Calculate calc = new Calculate(result);
-		    }
+			} else {
+			    result = result1 + result2 + result3 + result4;
+			    Calculate calc = new Calculate(result);
+			}
 
 		    String r = String.valueOf(result);
 		    Ergebnis.setText(r);
