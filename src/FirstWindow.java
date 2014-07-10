@@ -24,7 +24,8 @@ public class FirstWindow extends JFrame {
     double result2 = 0;
     double result3 = 0;
     double result4 = 0;
-    Calculate calc = new Calculate(this);
+    Calculate calc = new Calculate();
+    
 
     JLabel Angabe, flaeche, preis, menge;
     JTextField price, sqm, liter;
@@ -61,9 +62,9 @@ public class FirstWindow extends JFrame {
 	liter = new JTextField();
 	price = new JTextField();
 
-	price.setBounds(480, 330, 200, 30);
+	price.setBounds(20, 330, 200, 30);
 	liter.setBounds(250, 330, 200, 30);
-	sqm.setBounds(20, 330, 200, 30);
+	sqm.setBounds(480, 330, 200, 30);
 
 	add(price);
 	add(sqm);
@@ -125,9 +126,5 @@ public class FirstWindow extends JFrame {
 
 	});
 
-    }
-
-    public void setSqm(double ergebnis) {
-	sqm.setText(Double.toString(ergebnis));
     }
 }
