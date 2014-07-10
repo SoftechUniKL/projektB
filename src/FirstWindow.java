@@ -12,7 +12,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class FirstWindow extends JFrame {
-
+    // test test github sucks
     int clicked;
     double m1 = 0;
     double m2 = 0;
