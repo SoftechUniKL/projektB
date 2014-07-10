@@ -24,7 +24,7 @@ public class FirstWindow extends JFrame {
     double result2 = 0;
     double result3 = 0;
     double result4 = 0;
-    Calculate calc = new Calculate();
+    Calculate calc = new Calculate(this);
 
     JLabel Angabe, flaeche, preis, menge;
     JTextField price, sqm, liter;
