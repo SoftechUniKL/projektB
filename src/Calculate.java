@@ -1,33 +1,30 @@
 public class Calculate {
-    // github sblödsinn
-    private double fläche;
-    private double farbmenge;
+    static double fläche;
+    static double farbmenge;
 
     // preis?
-    private double preis;
+    double preis;
 
     // Statische Klassenvariablen
-    private static double endpreis;
-    private static double gesamtfläche;
+    static double endpreis;
+    static double gesamtfläche;
 
     FirstWindow first;
 
-    // Konstruktor
     Calculate(FirstWindow first) {
 	this.first = first;
-
     }
 
-    public double getFläche() {
-	return this.fläche;
+    public static double getFläche() {
+	return fläche;
     }
 
-    public void setFläche(double area) {
-	this.fläche = area;
+    public static void setFläche(double area) {
+	fläche = area;
     }
 
-    public void addFläche(double area) {
-	this.fläche += area;
+    public static void addFläche(double area) {
+	fläche += area;
     }
 
     public void setGesamtfläche() {
