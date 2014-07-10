@@ -118,17 +118,16 @@ public class Frame2 extends JFrame {
 		    result3 = m3 * h;
 		    result4 = m4 * h;
 
-		    for (int i = 0; i < 5; i++)
-			if (Top.isSelected()) {
+		    if (Top.isSelected()) {
 
-			    result = result1 + result2 + result3 + result4
-				    + (m1 * m2);
-			    Calculate.addFläche(result);
+			result = result1 + result2 + result3 + result4
+				+ (m1 * m2);
+			Calculate.addFläche(result);
 
-			} else {
-			    result = result1 + result2 + result3 + result4;
-			    Calculate.addFläche(result);
-			}
+		    } else {
+			result = result1 + result2 + result3 + result4;
+			Calculate.addFläche(result);
+		    }
 		    String r = String.valueOf(Calculate.getFläche());
 
 		    Ergebnis.setText(r);
