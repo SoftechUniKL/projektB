@@ -1,29 +1,36 @@
 public class Calculate {
-    static double fläche;
-    static double farbmenge;
+    private double fläche;
+    private double farbmenge;
 
     // preis?
-    double preis;
+    private double preis;
 
     // Statische Klassenvariablen
-    static double endpreis;
-    static double gesamtfläche;
+    private static double endpreis;
+    private static double gesamtfläche;
+
+    FirstWindow first;
 
     // Konstruktor
-    Calculate() {
+    Calculate(FirstWindow first) {
+	this.first = first;
 
     }
 
-    public static double getFläche() {
-	return fläche;
+    public double getFläche() {
+	return this.fläche;
     }
 
-    public static void setFläche(double area) {
-	fläche = area;
+    public void setFläche(double area) {
+	this.fläche = area;
     }
 
-    public static void addFläche(double area) {
-	fläche += area;
+    public void addFläche(double area) {
+	this.fläche += area;
+    }
+
+    public void setGesamtfläche() {
+	first.setSqm(this.fläche);
     }
 
 }

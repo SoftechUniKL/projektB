@@ -38,8 +38,10 @@ public class Frame2 extends JFrame {
     double result3 = 0;
     double result4 = 0;
 
-    public Frame2() {
+    Calculate calc;
 
+    public Frame2(Calculate calc) {
+	this.calc = calc;
 	getContentPane().setLayout(null);
 	// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	InitializeNextWindow();
@@ -118,20 +120,20 @@ public class Frame2 extends JFrame {
 		    result3 = m3 * h;
 		    result4 = m4 * h;
 
-		    for (int i = 0; i < 5; i++)
-			if (Top.isSelected()) {
+		    if (Top.isSelected()) {
 
-			    result = result1 + result2 + result3 + result4
-				    + (m1 * m2);
-			    Calculate.addFläche(result);
+			result = result1 + result2 + result3 + result4
+				+ (m1 * m2);
+			calc.addFläche(result);
 
-			} else {
-			    result = result1 + result2 + result3 + result4;
-			    Calculate.addFläche(result);
-			}
-		    String r = String.valueOf(Calculate.getFläche());
+		    } else {
+			result = result1 + result2 + result3 + result4;
+			calc.addFläche(result);
+		    }
+		    String r = String.valueOf(calc.getFläche());
 
 		    Ergebnis.setText(r);
+		    calc.setGesamtfläche();
 
 		    dispose();
 		    setVisible(true);
