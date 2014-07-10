@@ -12,7 +12,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class FirstWindow extends JFrame {
-    // test test github sucks
+
     int clicked;
     double m1 = 0;
     double m2 = 0;
@@ -25,7 +25,6 @@ public class FirstWindow extends JFrame {
     double result3 = 0;
     double result4 = 0;
     Calculate calc = new Calculate();
-    
 
     JLabel Angabe, flaeche, preis, menge;
     JTextField price, sqm, liter;
