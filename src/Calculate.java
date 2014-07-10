@@ -1,4 +1,5 @@
 public class Calculate {
+    // github sblödsinn
     private double fläche;
     private double farbmenge;
 

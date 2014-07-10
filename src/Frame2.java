@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class Frame2 extends JFrame {
-
+    // github sblödsinn
     JTextField feld1;
     JTextField feld2, Ergebnis;
 
@@ -132,7 +132,6 @@ public class Frame2 extends JFrame {
 			calc.addFläche(result);
 		    }
 		    String r = String.valueOf(calc.getFläche());
-
 
 		    Ergebnis.setText(r);
 		    calc.setGesamtfläche();

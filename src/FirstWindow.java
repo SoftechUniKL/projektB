@@ -13,6 +13,8 @@ import javax.swing.JTextField;
 
 public class FirstWindow extends JFrame {
 
+    // github sblödsinn
+
     int clicked;
     double m1 = 0;
     double m2 = 0;
@@ -61,9 +63,9 @@ public class FirstWindow extends JFrame {
 	liter = new JTextField();
 	price = new JTextField();
 
-	price.setBounds(20, 330, 200, 30);
+	price.setBounds(480, 330, 200, 30);
 	liter.setBounds(250, 330, 200, 30);
-	sqm.setBounds(480, 330, 200, 30);
+	sqm.setBounds(20, 330, 200, 30);
 
 	add(price);
 	add(sqm);
@@ -125,5 +127,9 @@ public class FirstWindow extends JFrame {
 
 	});
 
+    }
+
+    public void setSqm(double ergebnis) {
+	sqm.setText(Double.toString(ergebnis));
     }
 }

@@ -1,5 +1,6 @@
 import junit.framework.TestCase;
 
+// github sblödsinn
 public class ProjektTest extends TestCase {
     /*
      * private Wand wand;
