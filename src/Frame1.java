@@ -11,11 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-public class FirstWindow extends JFrame {
+public class Frame1 extends JFrame {
 
-    // github sblödsinn
-
-    int clicked;
     double m1 = 0;
     double m2 = 0;
     double m3 = 0;
@@ -35,7 +32,7 @@ public class FirstWindow extends JFrame {
     JPanel PreisKLasse;
     JPanel color;
 
-    public FirstWindow() {
+    public Frame1() {
 	getContentPane().setLayout(null);
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	InitializeWindow();
@@ -111,13 +108,9 @@ public class FirstWindow extends JFrame {
 	setSize(1000, 500);
 	setTitle("");
 
-	// Öffnet neues Fenster und zählt die Anzahl neuer Fenster
+	// Öffnet neues Fenster und zählt die Anzahl neuer Räume
 	next.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
-		// if(Ergebnis =anders) dann clicked ++
-
-		clicked++;
-		System.out.println(clicked);
 
 		Frame2 F2 = new Frame2(calc);
 		// setVisible(false);

@@ -1,21 +1,27 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class Frame2 extends JFrame {
-    // github sblödsinn
+
     JTextField feld1;
-    JTextField feld2, Ergebnis;
+    JTextField feld2, ergebnis;
 
     JTextField feld3;
     JTextField feld4;
     JTextField feld5;
+
+    ArrayList<JTextField> jtfAList;
 
     JLabel wand1;
     JLabel wand2;
@@ -25,6 +31,8 @@ public class Frame2 extends JFrame {
     JLabel Angabe;
 
     JButton calculate;
+    JButton rückgängig;
+    JButton übernehmen;
     JCheckBox Top;
 
     double m1 = 0;
@@ -43,6 +51,7 @@ public class Frame2 extends JFrame {
     public Frame2(Calculate calc) {
 	this.calc = calc;
 	getContentPane().setLayout(null);
+
 	// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	InitializeNextWindow();
 
@@ -54,7 +63,10 @@ public class Frame2 extends JFrame {
 	feld3 = new JTextField();
 	feld4 = new JTextField();
 	feld5 = new JTextField();
-	Ergebnis = new JTextField();
+	ergebnis = new JTextField();
+
+	jtfAList = new ArrayList<JTextField>(Arrays.asList(feld1, feld2, feld3,
+		feld4, feld5, ergebnis));
 
 	Angabe = new JLabel("Bitte füllen Sie folgende Angaben aus ");
 	Angabe.setBounds(10, 10, 250, 30);
@@ -83,22 +95,28 @@ public class Frame2 extends JFrame {
 	feld3.setBounds(20, 200, 200, 30);
 	feld4.setBounds(300, 200, 200, 30);
 	feld5.setBounds(20, 300, 200, 30);
-	Ergebnis.setBounds(20, 350, 200, 30);
+	ergebnis.setBounds(20, 350, 200, 30);
 	getContentPane().add(feld1);
 	getContentPane().add(feld2);
 	getContentPane().add(feld3);
 	getContentPane().add(feld4);
 	getContentPane().add(feld5);
-	getContentPane().add(Ergebnis);
+	getContentPane().add(ergebnis);
 
 	JButton calculate = new JButton("Berechnen");
+	JButton rückgängig = new JButton("Rückgängig");
+	JButton übernehmen = new JButton("Übernehmen");
 	final JCheckBox Top = new JCheckBox("Decke streichen");
 
 	Top.setBounds(300, 300, 200, 30);
 	calculate.setBounds(20, 500, 200, 30);
+	rückgängig.setBounds(300, 500, 200, 30);
+	übernehmen.setBounds(20, 600, 200, 30);
 
 	add(Top);
 	add(calculate);
+	add(rückgängig);
+	add(übernehmen);
 
 	setVisible(true);
 	setSize(700, 700);
@@ -121,35 +139,88 @@ public class Frame2 extends JFrame {
 		    result4 = m4 * h;
 
 		    if (Top.isSelected()) {
+			/*
+			 * Decke erstmal aussen vor. Wenn wirs mit mehreren
+			 * Wänden pro raum noch umsetzen, müssen wir hier eh
+			 * nochmal ran ;)
+			 */
 
-			result = result1 + result2 + result3 + result4
-				+ (m1 * m2);
-
-			calc.addFläche(result);
+			/*
+			 * result = result1 + result2 + result3 + result4 + (m1
+			 * * m2);
+			 */
 
 		    } else {
-			result = result1 + result2 + result3 + result4;
-			calc.addFläche(result);
+			calc.calcFläche(h, m1);
+			calc.calcFläche(h, m2);
+			calc.calcFläche(h, m3);
+			calc.calcFläche(h, m4);
+
 		    }
-		    String r = String.valueOf(calc.getFläche());
 
-		    Ergebnis.setText(r);
-		    calc.setGesamtfläche();
-
-		    dispose();
-		    setVisible(true);
+		    ergebnis.setText(Double.toString(calc.getFläche()));
 
 		} catch (Exception NumberFormatException) {
 
-		    Ergebnis.setText("Falsches Format");
+		    ergebnis.setText("Falsches Format");
 		}
 	    }
 
 	});
 
+	übernehmen.addActionListener(new ActionListener() {
+
+	    @Override
+	    public void actionPerformed(ActionEvent e) {
+		if (Double.compare(calc.getFläche(), 0) == 0) {
+		    JOptionPane.showMessageDialog(null,
+			    "Bitte klicken Sie erst auf Berechnen", "Achtung",
+			    JOptionPane.INFORMATION_MESSAGE);
+		} else {
+		    calc.setGesamtflächeFrame1();
+		    dispose();
+		}
+
+	    }
+	});
+	rückgängig.addActionListener(new ActionListener() {
+
+	    @Override
+	    public void actionPerformed(ActionEvent e) {
+		int n = JOptionPane.showConfirmDialog(null,
+			"Sind Sie sicher, dass Sie alle\n"
+				+ " Änderungen verwerfen möchten?", "Warnung",
+			JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+		if (n == 0) {
+		    calc.resetFläche();
+		    clearWindow();
+		}
+
+	    }
+	});
+
+	addWindowListener(new WindowAdapter() {
+	    public void windowClosing(WindowEvent e) {
+
+		int n = JOptionPane.showConfirmDialog(null,
+			"Sind Sie sicher, dass Sie alle Änderungen verwerfen\n"
+				+ " und das Fenster schließen möchten?",
+			"Warnung", JOptionPane.YES_NO_OPTION,
+			JOptionPane.WARNING_MESSAGE);
+		if (n == 0) {
+		    dispose();
+		} else {
+		    setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		}
+
+	    }
+	});
     }
 
-    void windowClosing(WindowEvent e) {
-	setVisible(false);
+    public void clearWindow() {
+	for (JTextField jtf : this.jtfAList) {
+	    jtf.setText("");
+	}
+
     }
 }

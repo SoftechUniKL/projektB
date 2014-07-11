@@ -1,34 +1,61 @@
 public class Calculate {
-    static double fläche;
-    static double farbmenge;
+
+    int numberOfRooms;
+
+    private double height;
+    private double width;
+
+    private double fläche;
+    private double farbmenge;
 
     // preis?
-    double preis;
+    private double preis;
 
     // Statische Klassenvariablen
     static double endpreis;
     static double gesamtfläche;
 
-    FirstWindow first;
+    Frame1 frame1;
 
-    Calculate(FirstWindow first) {
-	this.first = first;
+    Calculate(Frame1 frame1) {
+	this.frame1 = frame1;
     }
 
-    public static double getFläche() {
+    // Methoden
+    // Getter und Setter
+    public void calcFläche(double height, double width) {
+	this.fläche += height * width;
+    }
+
+    public void resetFläche() {
+	this.fläche = 0;
+    }
+
+    public void setHeight(double height) {
+	this.height = height;
+    }
+
+    public void setWidth(double width) {
+	this.width = width;
+    }
+
+    public double getFläche() {
 	return fläche;
     }
 
-    public static void setFläche(double area) {
-	fläche = area;
+    public void setFläche(double fläche) {
+	this.fläche = fläche;
     }
 
-    public static void addFläche(double area) {
-	fläche += area;
+    public void addFläche(double fläche) {
+	fläche += fläche;
     }
 
-    public void setGesamtfläche() {
-	first.setSqm(this.fläche);
+    public void setGesamtflächeFrame1() {
+	this.numberOfRooms += 1;
+	gesamtfläche += this.fläche;
+	this.resetFläche();
+	frame1.setSqm(gesamtfläche);
     }
 
 }
