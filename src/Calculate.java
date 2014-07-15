@@ -4,6 +4,7 @@ public class Calculate {
 
     private double height;
     private double width;
+    private double verbrauch;
 
     private double fläche;
 
@@ -70,16 +71,19 @@ public class Calculate {
 	 */
 	switch (Double.toString(preis)) {
 	case "0.3":
+	    verbrauch = 0.177;
 	    break;
 
 	case "0.5":
+	    verbrauch = 0.166;
 	    break;
 
 	case "0.6":
+	    verbrauch = 0.133;
 	    break;
 	}
 
-	this.farbmenge = this.gesamtfläche + 999999;
+	this.farbmenge = this.gesamtfläche * verbrauch;
 	frame1.setLiter(this.farbmenge);
     }
 
