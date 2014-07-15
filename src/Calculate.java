@@ -84,6 +84,7 @@ public class Calculate {
     }
 
     public void calcKostenvoranschlagFrame1() {
+	// this.utensilien preis ist sehr hoch
 	this.kostenvoranschlag = this.preis * this.gesamtfläche;
 	frame1.setEndprice(this.kostenvoranschlag);
     }

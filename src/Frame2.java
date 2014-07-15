@@ -145,10 +145,14 @@ public class Frame2 extends JFrame {
 			 * nochmal ran ;)
 			 */
 
-			/*
-			 * result = result1 + result2 + result3 + result4 + (m1
-			 * * m2);
-			 */
+			// TODO Decke anders implementieren
+
+			calc.calcFläche(m1, m2);// Decke über CalcFläche
+						// berechnet
+			calc.calcFläche(h, m1);
+			calc.calcFläche(h, m2);
+			calc.calcFläche(h, m3);
+			calc.calcFläche(h, m4);
 
 		    } else {
 			calc.calcFläche(h, m1);
