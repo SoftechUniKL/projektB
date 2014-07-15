@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JSlider;
 import javax.swing.JTextField;
 
 public class Frame1 extends JFrame {
@@ -30,7 +31,8 @@ public class Frame1 extends JFrame {
     JButton next;
     JRadioButton low, middle, high;
     JPanel PreisKLasse;
-    JPanel color;
+    JPanel utensilien;
+    JSlider pinsel, anzug, plane, rolle, eimer;
 
     public Frame1() {
 	getContentPane().setLayout(null);
@@ -47,9 +49,9 @@ public class Frame1 extends JFrame {
 	Angabe = new JLabel("Bitte füllen Sie folgende Angaben aus ");
 
 	Angabe.setBounds(10, 10, 250, 30);
-	flaeche.setBounds(20, 300, 200, 30);
-	menge.setBounds(250, 300, 200, 30);
-	preis.setBounds(480, 300, 200, 30);
+	flaeche.setBounds(20, 370, 200, 30);
+	menge.setBounds(250, 370, 200, 30);
+	preis.setBounds(480, 370, 200, 30);
 
 	add(preis);
 	add(menge);
@@ -60,9 +62,9 @@ public class Frame1 extends JFrame {
 	liter = new JTextField();
 	price = new JTextField();
 
-	price.setBounds(480, 330, 200, 30);
-	liter.setBounds(250, 330, 200, 30);
-	sqm.setBounds(20, 330, 200, 30);
+	price.setBounds(480, 400, 200, 30);
+	liter.setBounds(250, 400, 200, 30);
+	sqm.setBounds(20, 400, 200, 30);
 
 	add(price);
 	add(sqm);
@@ -88,15 +90,72 @@ public class Frame1 extends JFrame {
 	PreisKLasse.setBorder(BorderFactory.createTitledBorder(
 		BorderFactory.createRaisedSoftBevelBorder(),
 		"Preisklasse wählen"));
-	PreisKLasse.setBounds(250, 70, 300, 200);
+	PreisKLasse.setBounds(250, 70, 300, 300);
 	getContentPane().add(PreisKLasse);
 
-	// Farbauswahl
-	color = new JPanel();
-	color.setBorder(BorderFactory.createTitledBorder(
-		BorderFactory.createRaisedSoftBevelBorder(), "Farbauswahl"));
-	color.setBounds(600, 70, 300, 200);
-	getContentPane().add(color);
+	// Utensilien
+	JSlider pinsel = new JSlider();
+	JSlider anzug = new JSlider();
+	JSlider plane = new JSlider();
+	JSlider eimer = new JSlider();
+	JSlider rolle = new JSlider();
+
+	pinsel.setMinimum(0);
+	pinsel.setMaximum(20);
+	pinsel.setMajorTickSpacing(5);
+	pinsel.setMinorTickSpacing(1);
+	pinsel.createStandardLabels(1);
+	pinsel.setPaintTicks(true);
+	pinsel.setPaintLabels(true);
+	pinsel.setValue(0);
+
+	anzug.setMinimum(0);
+	anzug.setMaximum(20);
+	anzug.setMajorTickSpacing(5);
+	anzug.setMinorTickSpacing(1);
+	anzug.createStandardLabels(1);
+	anzug.setPaintTicks(true);
+	anzug.setPaintLabels(true);
+	anzug.setValue(0);
+
+	plane.setMinimum(0);
+	plane.setMaximum(20);
+	plane.setMajorTickSpacing(5);
+	plane.setMinorTickSpacing(1);
+	plane.createStandardLabels(1);
+	plane.setPaintTicks(true);
+	plane.setPaintLabels(true);
+	plane.setValue(0);
+
+	rolle.setMinimum(0);
+	rolle.setMaximum(20);
+	rolle.setMajorTickSpacing(5);
+	rolle.setMinorTickSpacing(1);
+	rolle.createStandardLabels(1);
+	rolle.setPaintTicks(true);
+	rolle.setPaintLabels(true);
+	rolle.setValue(0);
+
+	eimer.setMinimum(0);
+	eimer.setMaximum(20);
+	eimer.setMajorTickSpacing(5);
+	eimer.setMinorTickSpacing(1);
+	eimer.createStandardLabels(1);
+	eimer.setPaintTicks(true);
+	eimer.setPaintLabels(true);
+	eimer.setValue(0);
+
+	utensilien = new JPanel();
+	utensilien.add(anzug);
+	utensilien.add(plane);
+	utensilien.add(pinsel);
+	utensilien.add(eimer);
+	utensilien.add(rolle);
+	utensilien.setLayout(new GridLayout(5, 1));
+	utensilien.setBorder(BorderFactory.createTitledBorder(
+		BorderFactory.createRaisedSoftBevelBorder(), "Utensilien"));
+	utensilien.setBounds(600, 70, 300, 300);
+	getContentPane().add(utensilien);
 
 	JButton next = new JButton("Raum hinzufügen");
 
