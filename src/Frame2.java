@@ -177,7 +177,8 @@ public class Frame2 extends JFrame {
 			    "Bitte klicken Sie erst auf Berechnen", "Achtung",
 			    JOptionPane.INFORMATION_MESSAGE);
 		} else {
-		    calc.setGesamtflächeFrame1();
+		    calc.calcGesamtflächeFrame1();
+		    calc.calcKostenvoranschlagFrame1();
 		    dispose();
 		}
 

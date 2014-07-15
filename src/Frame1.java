@@ -179,9 +179,57 @@ public class Frame1 extends JFrame {
 
 	});
 
+	low.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+		// low wert an calculate
+		// calculate berechnet qm* low
+		// calculate ändert kostenvoranschlag
+
+		if (low.isSelected()) {
+		    calc.setPreis(0.3);
+		    calc.calcFarbmengeFrame1();
+		    calc.calcKostenvoranschlagFrame1();
+		}
+
+	    }
+
+	});
+
+	middle.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+		// siehe low kommentare
+		if (middle.isSelected()) {
+		    calc.setPreis(0.5);
+		    calc.calcFarbmengeFrame1();
+		    calc.calcKostenvoranschlagFrame1();
+		}
+	    }
+
+	});
+
+	high.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+		// siehe low kommentare
+		if (high.isSelected()) {
+		    calc.setPreis(0.6);
+		    calc.calcFarbmengeFrame1();
+		    calc.calcKostenvoranschlagFrame1();
+		}
+	    }
+
+	});
+
     }
 
     public void setSqm(double ergebnis) {
 	sqm.setText(Double.toString(ergebnis));
+    }
+
+    public void setEndprice(double kostenvoranschlag) {
+	price.setText(Double.toString(kostenvoranschlag));
+    }
+
+    public void setLiter(double farbmenge) {
+	liter.setText(Double.toString(farbmenge));
     }
 }

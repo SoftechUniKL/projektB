@@ -6,14 +6,14 @@ public class Calculate {
     private double width;
 
     private double fläche;
-    private double farbmenge;
 
     // preis?
     private double preis;
 
     // Statische Klassenvariablen
-    static double endpreis;
-    static double gesamtfläche;
+    private static double kostenvoranschlag;
+    private static double gesamtfläche;
+    private static double farbmenge;
 
     Frame1 frame1;
 
@@ -23,6 +23,11 @@ public class Calculate {
 
     // Methoden
     // Getter und Setter
+
+    public void setPreis(double preis) {
+	this.preis = preis;
+    }
+
     public void calcFläche(double height, double width) {
 	this.fläche += height * width;
     }
@@ -51,11 +56,25 @@ public class Calculate {
 	fläche += fläche;
     }
 
-    public void setGesamtflächeFrame1() {
+    public void calcGesamtflächeFrame1() {
 	this.numberOfRooms += 1;
 	gesamtfläche += this.fläche;
 	this.resetFläche();
 	frame1.setSqm(gesamtfläche);
+    }
+
+    public void calcFarbmengeFrame1() {
+	/*
+	 * benötigte variablen: gesamtfläche preis(if abfrage)--> ml/l pro qm
+	 * switch case
+	 */
+	this.farbmenge = this.gesamtfläche + 999999;
+	frame1.setLiter(this.farbmenge);
+    }
+
+    public void calcKostenvoranschlagFrame1() {
+	this.kostenvoranschlag = this.preis * this.gesamtfläche;
+	frame1.setEndprice(this.kostenvoranschlag);
     }
 
 }
