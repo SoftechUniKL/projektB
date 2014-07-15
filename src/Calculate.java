@@ -68,6 +68,17 @@ public class Calculate {
 	 * benötigte variablen: gesamtfläche preis(if abfrage)--> ml/l pro qm
 	 * switch case
 	 */
+	switch (Double.toString(preis)) {
+	case "0.3":
+	    break;
+
+	case "0.5":
+	    break;
+
+	case "0.6":
+	    break;
+	}
+
 	this.farbmenge = this.gesamtfläche + 999999;
 	frame1.setLiter(this.farbmenge);
     }
