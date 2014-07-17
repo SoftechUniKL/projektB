@@ -1,7 +1,8 @@
 public class Calculate {
 
     int numberOfRooms;
-
+    // TODO hashset ode rähnliches mti menge von raum/wand objekten zur
+    // berechnung über elemente iterieren
     private double height;
     private double width;
     private double verbrauch;
@@ -31,6 +32,7 @@ public class Calculate {
 
     public void calcFläche(double height, double width) {
 	this.fläche += height * width;
+	// wandert in "Wand"
     }
 
     public void resetFläche() {
