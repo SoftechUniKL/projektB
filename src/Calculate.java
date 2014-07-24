@@ -85,14 +85,14 @@ public class Calculate {
 	    break;
 	}
 
-	this.farbmenge = this.gesamtfläche * verbrauch;
-	frame1.setLiter(this.farbmenge);
+	Calculate.farbmenge = Calculate.gesamtfläche * verbrauch;
+	frame1.setLiter(Calculate.farbmenge);
     }
 
     public void calcKostenvoranschlagFrame1() {
 	// this.utensilien preis ist sehr hoch
-	this.kostenvoranschlag = this.preis * this.gesamtfläche;
-	frame1.setEndprice(this.kostenvoranschlag);
+	Calculate.kostenvoranschlag = this.preis * Calculate.gesamtfläche;
+	frame1.setEndprice(Calculate.kostenvoranschlag);
     }
 
 }

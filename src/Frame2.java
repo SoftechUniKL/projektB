@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
 public class Frame2 extends JFrame {
 
@@ -205,6 +206,7 @@ public class Frame2 extends JFrame {
 	});
 
 	addWindowListener(new WindowAdapter() {
+	    @Override
 	    public void windowClosing(WindowEvent e) {
 
 		int n = JOptionPane.showConfirmDialog(null,
@@ -215,7 +217,7 @@ public class Frame2 extends JFrame {
 		if (n == 0) {
 		    dispose();
 		} else {
-		    setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		    setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		}
 
 	    }
