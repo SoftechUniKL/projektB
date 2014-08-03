@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class Frame1 extends JFrame {
 
@@ -24,9 +26,11 @@ public class Frame1 extends JFrame {
     double result2 = 0;
     double result3 = 0;
     double result4 = 0;
-    Calculate calc = new Calculate(this);
+    Utensilien utens = new Utensilien(this);
+    Calculate calc = new Calculate(this, utens);
 
-    JLabel Angabe, flaeche, preis, menge;
+    JLabel Angabe, flaeche, preis, menge, labelPinsel, labelAnzug, labelPlane,
+	    labelRolle, labelEimer;
     JTextField price, sqm, liter;
     JButton next;
     JRadioButton low, middle, high;
@@ -49,9 +53,9 @@ public class Frame1 extends JFrame {
 	Angabe = new JLabel("Bitte füllen Sie folgende Angaben aus ");
 
 	Angabe.setBounds(10, 10, 250, 30);
-	flaeche.setBounds(20, 370, 200, 30);
-	menge.setBounds(250, 370, 200, 30);
-	preis.setBounds(480, 370, 200, 30);
+	flaeche.setBounds(20, 510, 200, 30);
+	menge.setBounds(200, 510, 200, 30);
+	preis.setBounds(380, 510, 200, 30);
 
 	add(preis);
 	add(menge);
@@ -62,9 +66,9 @@ public class Frame1 extends JFrame {
 	liter = new JTextField();
 	price = new JTextField();
 
-	price.setBounds(480, 400, 200, 30);
-	liter.setBounds(250, 400, 200, 30);
-	sqm.setBounds(20, 400, 200, 30);
+	sqm.setBounds(20, 540, 150, 30);
+	liter.setBounds(200, 540, 150, 30);
+	price.setBounds(380, 540, 150, 30);
 
 	add(price);
 	add(sqm);
@@ -99,6 +103,13 @@ public class Frame1 extends JFrame {
 	JSlider plane = new JSlider();
 	JSlider eimer = new JSlider();
 	JSlider rolle = new JSlider();
+
+	// Utensilienlabels
+	JLabel labelPinsel = new JLabel("Pinsel");
+	JLabel labelAnzug = new JLabel("Anzüge");
+	JLabel labelPlane = new JLabel("Planen");
+	JLabel labelEimer = new JLabel("Eimer");
+	JLabel labelRolle = new JLabel("Farbrollen");
 
 	pinsel.setMinimum(0);
 	pinsel.setMaximum(20);
@@ -146,17 +157,85 @@ public class Frame1 extends JFrame {
 	eimer.setValue(0);
 
 	utensilien = new JPanel();
+	utensilien.add(labelAnzug);
 	utensilien.add(anzug);
+	utensilien.add(labelPlane);
 	utensilien.add(plane);
+	utensilien.add(labelPinsel);
 	utensilien.add(pinsel);
+	utensilien.add(labelEimer);
 	utensilien.add(eimer);
+	utensilien.add(labelRolle);
 	utensilien.add(rolle);
-	utensilien.setLayout(new GridLayout(5, 1));
+	utensilien.setLayout(new GridLayout(10, 1));
 	utensilien.setBorder(BorderFactory.createTitledBorder(
 		BorderFactory.createRaisedSoftBevelBorder(), "Utensilien"));
-	utensilien.setBounds(600, 70, 300, 300);
+	utensilien.setBounds(600, 70, 300, 500);
 	getContentPane().add(utensilien);
 
+	anzug.addChangeListener(new ChangeListener() {
+
+	    @Override
+	    public void stateChanged(ChangeEvent e) {
+		JSlider source = (JSlider) e.getSource();
+		if (!source.getValueIsAdjusting()) {
+		    int val = (int) source.getValue();
+		    utens.addAnzugPreis(val);
+		    calc.calcKostenvoranschlagFrame1();
+		}
+	    }
+	});
+	plane.addChangeListener(new ChangeListener() {
+
+	    // TODO aus jedem jslider spearat preis rausholen, dann eine Methode
+	    // die die 5 Preise entgegennimmt
+	    // und zusammenaddiert und DANN übergibt
+	    @Override
+	    public void stateChanged(ChangeEvent e) {
+		JSlider source = (JSlider) e.getSource();
+		if (!source.getValueIsAdjusting()) {
+		    int val = (int) source.getValue();
+		    utens.addPlanePreis(val);
+		    calc.calcKostenvoranschlagFrame1();
+		}
+	    }
+	});
+	pinsel.addChangeListener(new ChangeListener() {
+
+	    @Override
+	    public void stateChanged(ChangeEvent e) {
+		JSlider source = (JSlider) e.getSource();
+		if (!source.getValueIsAdjusting()) {
+		    int val = (int) source.getValue();
+		    utens.addPinselPreis(val);
+		    calc.calcKostenvoranschlagFrame1();
+		}
+	    }
+	});
+	eimer.addChangeListener(new ChangeListener() {
+
+	    @Override
+	    public void stateChanged(ChangeEvent e) {
+		JSlider source = (JSlider) e.getSource();
+		if (!source.getValueIsAdjusting()) {
+		    int val = (int) source.getValue();
+		    utens.addEimerPreis(val);
+		    calc.calcKostenvoranschlagFrame1();
+		}
+	    }
+	});
+	rolle.addChangeListener(new ChangeListener() {
+
+	    @Override
+	    public void stateChanged(ChangeEvent e) {
+		JSlider source = (JSlider) e.getSource();
+		if (!source.getValueIsAdjusting()) {
+		    int val = (int) source.getValue();
+		    utens.addRollePreis(val);
+		    calc.calcKostenvoranschlagFrame1();
+		}
+	    }
+	});
 	JButton next = new JButton("Raum hinzufügen");
 
 	next.setBounds(20, 150, 200, 30);
@@ -164,8 +243,8 @@ public class Frame1 extends JFrame {
 	add(next);
 
 	setVisible(true);
-	setSize(1000, 500);
-	setTitle("");
+	setSize(1000, 650);
+	setTitle("Die MalerApp 25");
 
 	// Öffnet neues Fenster und zählt die Anzahl neuer Räume
 	next.addActionListener(new ActionListener() {

@@ -18,9 +18,12 @@ public class Calculate {
     private static double farbmenge;
 
     Frame1 frame1;
+    Utensilien utens;
 
-    Calculate(Frame1 frame1) {
+    Calculate(Frame1 frame1, Utensilien utens) {
 	this.frame1 = frame1;
+	this.utens = utens;
+
     }
 
     // Methoden
@@ -91,7 +94,9 @@ public class Calculate {
 
     public void calcKostenvoranschlagFrame1() {
 	// this.utensilien preis ist sehr hoch
-	Calculate.kostenvoranschlag = this.preis * Calculate.gesamtfläche;
+	Calculate.kostenvoranschlag = (this.preis * Calculate.gesamtfläche)
+		+ utens.getGesamt();
+	// Calculate.kostenvoranschlag += utens.getGesamt();
 	frame1.setEndprice(Calculate.kostenvoranschlag);
     }
 
