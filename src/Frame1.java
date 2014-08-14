@@ -26,6 +26,14 @@ public class Frame1 extends JFrame {
     double result2 = 0;
     double result3 = 0;
     double result4 = 0;
+    double gesamtfläche, kostenVoranschlag, farbmenge;
+    double verbrauch;
+
+    Frame1 thisframe1 = this;
+    Frame2 frame2;
+    // Doubles für Utensilienmethoden
+    double preisAnzug, preisPinsel, preisPlane, preisEimer, preisRolle;
+    double utensGesamt;
     Utensilien utens = new Utensilien(this);
     Calculate calc = new Calculate(this, utens);
 
@@ -180,7 +188,7 @@ public class Frame1 extends JFrame {
 		JSlider source = (JSlider) e.getSource();
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
-		    utens.addAnzugPreis(val);
+		    addAnzugPreis(val);
 		    calc.calcKostenvoranschlagFrame1();
 		}
 	    }
@@ -195,7 +203,7 @@ public class Frame1 extends JFrame {
 		JSlider source = (JSlider) e.getSource();
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
-		    utens.addPlanePreis(val);
+		    addPlanePreis(val);
 		    calc.calcKostenvoranschlagFrame1();
 		}
 	    }
@@ -207,7 +215,7 @@ public class Frame1 extends JFrame {
 		JSlider source = (JSlider) e.getSource();
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
-		    utens.addPinselPreis(val);
+		    addPinselPreis(val);
 		    calc.calcKostenvoranschlagFrame1();
 		}
 	    }
@@ -219,7 +227,7 @@ public class Frame1 extends JFrame {
 		JSlider source = (JSlider) e.getSource();
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
-		    utens.addEimerPreis(val);
+		    addEimerPreis(val);
 		    calc.calcKostenvoranschlagFrame1();
 		}
 	    }
@@ -231,7 +239,7 @@ public class Frame1 extends JFrame {
 		JSlider source = (JSlider) e.getSource();
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
-		    utens.addRollePreis(val);
+		    addRollePreis(val);
 		    calc.calcKostenvoranschlagFrame1();
 		}
 	    }
@@ -250,7 +258,7 @@ public class Frame1 extends JFrame {
 	next.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 
-		Frame2 F2 = new Frame2(calc);
+		frame2 = new Frame2(thisFrame1);
 		// setVisible(false);
 		// F2.toFront();
 
@@ -310,5 +318,76 @@ public class Frame1 extends JFrame {
 
     public void setLiter(double farbmenge) {
 	liter.setText(Double.toString(farbmenge));
+    }
+
+    /*
+     * Methoden für die Utensilien
+     */
+    public void addAnzugPreis(int val) {
+	this.preisAnzug = val * 3.50;
+    }
+
+    public void addPlanePreis(int val) {
+	this.preisPlane = val * 4;
+    }
+
+    public void addPinselPreis(int val) {
+	this.preisPinsel = val * 6;
+    }
+
+    public void addEimerPreis(int val) {
+	this.preisEimer = val * 6;
+    }
+
+    public void addRollePreis(int val) {
+	this.preisRolle = val * 10;
+    }
+
+    public void calcGesamt() {
+	utensGesamt = preisAnzug + preisPlane + preisPinsel + preisEimer
+		+ preisRolle;
+    }
+
+    public double getGesamt() {
+	this.calcGesamt();
+	return utensGesamt;
+    }
+
+    public void calcGesamtflächeFrame1() {
+	this.numberOfRooms += 1;
+	gesamtfläche += this.fläche;
+	this.resetFläche();
+	frame1.setSqm(gesamtfläche);
+    }
+
+    public void calcFarbmengeFrame1() {
+	/*
+	 * benötigte variablen: gesamtfläche preis(if abfrage)--> ml/l pro qm
+	 * switch case
+	 */
+	switch (Double.toString(preis)) {
+	case "0.3":
+	    verbrauch = 0.177;
+	    break;
+
+	case "0.5":
+	    verbrauch = 0.166;
+	    break;
+
+	case "0.6":
+	    verbrauch = 0.133;
+	    break;
+	}
+
+	Calculate.farbmenge = Calculate.gesamtfläche * verbrauch;
+	frame1.setLiter(Calculate.farbmenge);
+    }
+
+    public void calcKostenvoranschlagFrame1() {
+	// this.utensilien preis ist sehr hoch
+	Calculate.kostenvoranschlag = (this.preis * Calculate.gesamtfläche)
+		+ utens.getGesamt();
+	// Calculate.kostenvoranschlag += utens.getGesamt();
+	frame1.setEndprice(Calculate.kostenvoranschlag);
     }
 }
