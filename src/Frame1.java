@@ -29,7 +29,8 @@ public class Frame1 extends JFrame {
     double gesamtfläche, kostenVoranschlag, farbmenge;
     double verbrauch;
 
-    Frame1 thisframe1 = this;
+    Frame1 thisFrame1 = this;
+
     Frame2 frame2;
     // Doubles für Utensilienmethoden
     double preisAnzug, preisPinsel, preisPlane, preisEimer, preisRolle;
@@ -354,7 +355,7 @@ public class Frame1 extends JFrame {
     }
 
     public void calcGesamtflächeFrame1() {
-	this.numberOfRooms += 1;
+	// this.numberOfRooms += 1;
 	gesamtfläche += this.fläche;
 	this.resetFläche();
 	frame1.setSqm(gesamtfläche);
@@ -379,13 +380,13 @@ public class Frame1 extends JFrame {
 	    break;
 	}
 
-	Calculate.farbmenge = Calculate.gesamtfläche * verbrauch;
-	frame1.setLiter(Calculate.farbmenge);
+	farbmenge = gesamtfläche * verbrauch;
+	setLiter(farbmenge);
     }
 
     public void calcKostenvoranschlagFrame1() {
 	// this.utensilien preis ist sehr hoch
-	Calculate.kostenvoranschlag = (this.preis * Calculate.gesamtfläche)
+	kostenvoranschlag = (this.preis * this.gesamtfläche)
 		+ utens.getGesamt();
 	// Calculate.kostenvoranschlag += utens.getGesamt();
 	frame1.setEndprice(Calculate.kostenvoranschlag);

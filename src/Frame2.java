@@ -50,7 +50,7 @@ public class Frame2 extends JFrame {
     double höhe;
     double width;
     double verbrauch;
-    double fläche;
+    double fläche; // muss an frame1 übergeben werden
 
     Frame1 frame1;
 
@@ -152,22 +152,22 @@ public class Frame2 extends JFrame {
 
 			// TODO Decke anders implementieren
 
-			calc.calcFläche(m1, m2);// Decke über CalcFläche
-						// berechnet
-			calc.calcFläche(h, m1);
-			calc.calcFläche(h, m2);
-			calc.calcFläche(h, m3);
-			calc.calcFläche(h, m4);
+			calcFläche(m1, m2);// Decke über CalcFläche
+					   // berechnet
+			calcFläche(h, m1);
+			calcFläche(h, m2);
+			calcFläche(h, m3);
+			calcFläche(h, m4);
 
 		    } else {
-			calc.calcFläche(h, m1);
-			calc.calcFläche(h, m2);
-			calc.calcFläche(h, m3);
-			calc.calcFläche(h, m4);
+			calcFläche(h, m1);
+			calcFläche(h, m2);
+			calcFläche(h, m3);
+			calcFläche(h, m4);
 
 		    }
 
-		    ergebnis.setText(Double.toString(calc.getFläche()));
+		    ergebnis.setText(Double.toString(fläche));
 
 		} catch (Exception NumberFormatException) {
 
@@ -181,13 +181,13 @@ public class Frame2 extends JFrame {
 
 	    @Override
 	    public void actionPerformed(ActionEvent e) {
-		if (Double.compare(calc.getFläche(), 0) == 0) {
+		if (Double.compare(fläche, 0) == 0) {
 		    JOptionPane.showMessageDialog(null,
 			    "Bitte klicken Sie erst auf Berechnen", "Achtung",
 			    JOptionPane.INFORMATION_MESSAGE);
 		} else {
-		    calc.calcGesamtflächeFrame1();
-		    calc.calcKostenvoranschlagFrame1();
+		    frame1.calcGesamtflächeFrame1();
+		    frame1.calcKostenvoranschlagFrame1();
 		    dispose();
 		}
 
@@ -202,7 +202,7 @@ public class Frame2 extends JFrame {
 				+ " Änderungen verwerfen möchten?", "Warnung",
 			JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 		if (n == 0) {
-		    calc.resetFläche();
+		    resetFläche();
 		    clearWindow();
 		}
 
@@ -255,7 +255,7 @@ public class Frame2 extends JFrame {
     }
 
     public double getFläche() {
-	return fläche;
+	return this.fläche;
     }
 
     public void setFläche(double fläche) {
