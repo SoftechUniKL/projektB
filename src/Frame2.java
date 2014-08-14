@@ -47,12 +47,16 @@ public class Frame2 extends JFrame {
     double result3 = 0;
     double result4 = 0;
 
-    Calculate calc;
+    double höhe;
+    double width;
+    double verbrauch;
+    double fläche;
 
-    public Frame2(Calculate calc) {
-	this.calc = calc;
+    Frame1 frame1;
+
+    public Frame2(Frame1 frame1) {
 	getContentPane().setLayout(null);
-
+	this.frame1 = frame1;
 	// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	InitializeNextWindow();
 
@@ -229,5 +233,32 @@ public class Frame2 extends JFrame {
 	    jtf.setText("");
 	}
 
+    }
+
+    // Methoden für Flächenberechnung
+
+    public void calcFläche(double height, double width) {
+	this.fläche += height * width;
+	// wandert in "Wand"
+    }
+
+    public void resetFläche() {
+	this.fläche = 0;
+    }
+
+    public void setHeight(double höhe) {
+	this.höhe = höhe;
+    }
+
+    public void setWidth(double width) {
+	this.width = width;
+    }
+
+    public double getFläche() {
+	return fläche;
+    }
+
+    public void setFläche(double fläche) {
+	this.fläche = fläche;
     }
 }

@@ -48,7 +48,7 @@ public class Frame1 extends JFrame {
     public void InitializeWindow() {
 
 	flaeche = new JLabel("Gesamtfläche in qm:");
-	preis = new JLabel("Kostenvoranschlag:");
+	preis = new JLabel("Kostenvoranschlag in Euro:");
 	menge = new JLabel("Farbmenge in Liter:");
 	Angabe = new JLabel("Bitte füllen Sie folgende Angaben aus ");
 
