@@ -261,8 +261,4 @@ public class Frame2 extends JFrame {
 	this.fläche = fläche;
     }
 
-    public double getFläche() {
-	return this.fläche;
-    }
-
 }
