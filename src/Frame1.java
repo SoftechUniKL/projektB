@@ -26,8 +26,9 @@ public class Frame1 extends JFrame {
     double result2 = 0;
     double result3 = 0;
     double result4 = 0;
-    double gesamtfläche, kostenVoranschlag, farbmenge;
+    double gesamtfläche, kostenvoranschlag, farbmenge;
     double verbrauch;
+    double preisklasse;
 
     Frame1 thisFrame1 = this;
 
@@ -274,9 +275,9 @@ public class Frame1 extends JFrame {
 		// calculate ändert kostenvoranschlag
 
 		if (low.isSelected()) {
-		    calc.setPreis(0.3);
-		    calc.calcFarbmengeFrame1();
-		    calc.calcKostenvoranschlagFrame1();
+		    preisklasse = 0.3;
+		    calcFarbmengeFrame1();
+		    calcKostenvoranschlagFrame1();
 		}
 
 	    }
@@ -287,9 +288,9 @@ public class Frame1 extends JFrame {
 	    public void actionPerformed(ActionEvent e) {
 		// siehe low kommentare
 		if (middle.isSelected()) {
-		    calc.setPreis(0.5);
-		    calc.calcFarbmengeFrame1();
-		    calc.calcKostenvoranschlagFrame1();
+		    preisklasse = 0.5;
+		    calcFarbmengeFrame1();
+		    calcKostenvoranschlagFrame1();
 		}
 	    }
 
@@ -299,9 +300,9 @@ public class Frame1 extends JFrame {
 	    public void actionPerformed(ActionEvent e) {
 		// siehe low kommentare
 		if (high.isSelected()) {
-		    calc.setPreis(0.6);
-		    calc.calcFarbmengeFrame1();
-		    calc.calcKostenvoranschlagFrame1();
+		    preisklasse = 0.6;
+		    calcFarbmengeFrame1();
+		    calcKostenvoranschlagFrame1();
 		}
 	    }
 
@@ -354,11 +355,11 @@ public class Frame1 extends JFrame {
 	return utensGesamt;
     }
 
-    public void calcGesamtflächeFrame1() {
+    public void calcGesamtflächeFrame1(double fläche) {
 	// this.numberOfRooms += 1;
-	gesamtfläche += this.fläche;
-	this.resetFläche();
-	frame1.setSqm(gesamtfläche);
+	gesamtfläche += fläche;
+	// this.resetFläche();
+	setSqm(gesamtfläche);
     }
 
     public void calcFarbmengeFrame1() {
@@ -366,7 +367,7 @@ public class Frame1 extends JFrame {
 	 * benötigte variablen: gesamtfläche preis(if abfrage)--> ml/l pro qm
 	 * switch case
 	 */
-	switch (Double.toString(preis)) {
+	switch (Double.toString(preisklasse)) {
 	case "0.3":
 	    verbrauch = 0.177;
 	    break;
@@ -386,9 +387,9 @@ public class Frame1 extends JFrame {
 
     public void calcKostenvoranschlagFrame1() {
 	// this.utensilien preis ist sehr hoch
-	kostenvoranschlag = (this.preis * this.gesamtfläche)
+	kostenvoranschlag = (this.preisklasse * this.gesamtfläche)
 		+ utens.getGesamt();
 	// Calculate.kostenvoranschlag += utens.getGesamt();
-	frame1.setEndprice(Calculate.kostenvoranschlag);
+	setEndprice(this.kostenvoranschlag);
     }
 }

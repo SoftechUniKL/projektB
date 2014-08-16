@@ -44,7 +44,6 @@ public class calcFlächeTest extends TestCase {
 	actualFläche = frame2.getFläche();
 	assertEquals(expectedFläche, actualFläche, 0.0002);
 	tearDown();
-
 	/*
 	 * ODER: assertEquals(expectedFläche, frame2.getFläche(), 0.0002
 	 */
