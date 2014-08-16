@@ -36,8 +36,6 @@ public class Frame1 extends JFrame {
     // Doubles für Utensilienmethoden
     double preisAnzug, preisPinsel, preisPlane, preisEimer, preisRolle;
     double utensGesamt;
-    Utensilien utens = new Utensilien(this);
-    Calculate calc = new Calculate(this, utens);
 
     JLabel Angabe, flaeche, preis, menge, labelPinsel, labelAnzug, labelPlane,
 	    labelRolle, labelEimer;
@@ -191,7 +189,7 @@ public class Frame1 extends JFrame {
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
 		    addAnzugPreis(val);
-		    calc.calcKostenvoranschlagFrame1();
+		    calcKostenvoranschlagFrame1();
 		}
 	    }
 	});
@@ -206,7 +204,7 @@ public class Frame1 extends JFrame {
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
 		    addPlanePreis(val);
-		    calc.calcKostenvoranschlagFrame1();
+		    calcKostenvoranschlagFrame1();
 		}
 	    }
 	});
@@ -218,7 +216,7 @@ public class Frame1 extends JFrame {
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
 		    addPinselPreis(val);
-		    calc.calcKostenvoranschlagFrame1();
+		    calcKostenvoranschlagFrame1();
 		}
 	    }
 	});
@@ -230,7 +228,7 @@ public class Frame1 extends JFrame {
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
 		    addEimerPreis(val);
-		    calc.calcKostenvoranschlagFrame1();
+		    calcKostenvoranschlagFrame1();
 		}
 	    }
 	});
@@ -242,7 +240,7 @@ public class Frame1 extends JFrame {
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
 		    addRollePreis(val);
-		    calc.calcKostenvoranschlagFrame1();
+		    calcKostenvoranschlagFrame1();
 		}
 	    }
 	});
@@ -345,13 +343,13 @@ public class Frame1 extends JFrame {
 	this.preisRolle = val * 10;
     }
 
-    public void calcGesamt() {
+    public void calcGesamtUtens() {
 	utensGesamt = preisAnzug + preisPlane + preisPinsel + preisEimer
 		+ preisRolle;
     }
 
-    public double getGesamt() {
-	this.calcGesamt();
+    public double getGesamtUtens() {
+	this.calcGesamtUtens();
 	return utensGesamt;
     }
 
@@ -387,8 +385,9 @@ public class Frame1 extends JFrame {
 
     public void calcKostenvoranschlagFrame1() {
 	// this.utensilien preis ist sehr hoch
-	kostenvoranschlag = (this.preisklasse * this.gesamtfläche)
-		+ utens.getGesamt();
+	calcFarbmengeFrame1();
+	this.kostenvoranschlag = (this.preisklasse * this.gesamtfläche)
+		+ getGesamtUtens();
 	// Calculate.kostenvoranschlag += utens.getGesamt();
 	setEndprice(this.kostenvoranschlag);
     }

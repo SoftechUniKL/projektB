@@ -1,10 +1,13 @@
+import static org.junit.Assert.*;
+
 import java.rmi.RemoteException;
 
 import junit.framework.TestCase;
 
 import org.junit.Test;
 
-public class calcFlächeTest extends TestCase {
+
+public class calcFlächeTest{
 
     private Frame1 frame1;
     private Frame2 frame2;
