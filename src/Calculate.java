@@ -58,10 +58,6 @@ public class Calculate {
 	this.fläche = fläche;
     }
 
-    public void addFläche(double fläche) {
-	fläche += fläche;
-    }
-
     public void calcGesamtflächeFrame1() {
 	this.numberOfRooms += 1;
 	gesamtfläche += this.fläche;
