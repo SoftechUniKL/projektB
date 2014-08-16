@@ -50,7 +50,7 @@ public class Frame2 extends JFrame {
     double höhe;
     double width;
     double verbrauch;
-    double fläche; // muss an frame1 übergeben werden
+    private double fläche; // muss an frame1 übergeben werden
 
     Frame1 frame1;
 
@@ -261,4 +261,9 @@ public class Frame2 extends JFrame {
     public void setFläche(double fläche) {
 	this.fläche = fläche;
     }
+
+    public double getFläche() {
+	return this.fläche;
+    }
+
 }
