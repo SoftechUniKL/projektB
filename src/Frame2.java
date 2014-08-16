@@ -237,9 +237,8 @@ public class Frame2 extends JFrame {
 
     // Methoden für Flächenberechnung
 
-    public void calcFläche(double height, double width) {
-	this.fläche += height * width;
-	// wandert in "Wand"
+    public double calcFläche(double height, double width) {
+	return this.fläche += height * width;
     }
 
     public void resetFläche() {
