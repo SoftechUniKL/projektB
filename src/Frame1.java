@@ -360,6 +360,11 @@ public class Frame1 extends JFrame {
 	setSqm(gesamtfläche);
     }
 
+    public double getMenge() {
+	this.calcFarbmengeFrame1();
+	return farbmenge;
+    }
+
     public void calcFarbmengeFrame1() {
 	/*
 	 * benötigte variablen: gesamtfläche preis(if abfrage)--> ml/l pro qm
