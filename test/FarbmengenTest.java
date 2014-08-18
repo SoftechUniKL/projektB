@@ -16,11 +16,13 @@ public class FarbmengenTest {
     protected void setUp() throws RemoteException {
 	frame = new Frame1();
 	verbrauch = 0.177;
+	frame.verbrauch = verbrauch;
 	expectedFarbmenge = 8.85;
-	frame.calcFarbmengeFrame1(0.3);
+	frame.calcFarbmengeFrame1();
 	gesamtfläche = 50;
+	frame.gesamtfläche = gesamtfläche;
 	preisklasse = 0.3;
-
+	frame.preisklasse = preisklasse;
     }
 
     protected void tearDown() throws RemoteException {
@@ -34,7 +36,7 @@ public class FarbmengenTest {
     public void test() throws RemoteException {
 	setUp();
 	actualFarbmenge = frame.getMenge();
-	frame.calcFarbmengeFrame1(0.3);
+	frame.calcFarbmengeFrame1();
 	assertEquals(expectedFarbmenge, actualFarbmenge, 0.00002);
 	tearDown();
     }

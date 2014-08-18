@@ -189,7 +189,7 @@ public class Frame1 extends JFrame {
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
 		    addAnzugPreis(val);
-		    calcKostenvoranschlagFrame1();
+		    calcKostenvoranschlag();
 		}
 	    }
 	});
@@ -204,7 +204,7 @@ public class Frame1 extends JFrame {
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
 		    addPlanePreis(val);
-		    calcKostenvoranschlagFrame1();
+		    calcKostenvoranschlag();
 		}
 	    }
 	});
@@ -216,7 +216,7 @@ public class Frame1 extends JFrame {
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
 		    addPinselPreis(val);
-		    calcKostenvoranschlagFrame1();
+		    calcKostenvoranschlag();
 		}
 	    }
 	});
@@ -228,7 +228,7 @@ public class Frame1 extends JFrame {
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
 		    addEimerPreis(val);
-		    calcKostenvoranschlagFrame1();
+		    calcKostenvoranschlag();
 		}
 	    }
 	});
@@ -240,7 +240,7 @@ public class Frame1 extends JFrame {
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
 		    addRollePreis(val);
-		    calcKostenvoranschlagFrame1();
+		    calcKostenvoranschlag();
 		}
 	    }
 	});
@@ -275,7 +275,7 @@ public class Frame1 extends JFrame {
 		if (low.isSelected()) {
 		    preisklasse = 0.3;
 		    calcFarbmengeFrame1();
-		    calcKostenvoranschlagFrame1();
+		    calcKostenvoranschlag();
 		}
 
 	    }
@@ -288,7 +288,7 @@ public class Frame1 extends JFrame {
 		if (middle.isSelected()) {
 		    preisklasse = 0.5;
 		    calcFarbmengeFrame1();
-		    calcKostenvoranschlagFrame1();
+		    calcKostenvoranschlag();
 		}
 	    }
 
@@ -300,7 +300,7 @@ public class Frame1 extends JFrame {
 		if (high.isSelected()) {
 		    preisklasse = 0.6;
 		    calcFarbmengeFrame1();
-		    calcKostenvoranschlagFrame1();
+		    calcKostenvoranschlag();
 		}
 	    }
 
@@ -318,6 +318,10 @@ public class Frame1 extends JFrame {
 
     public void setLiter(double farbmenge) {
 	liter.setText(Double.toString(farbmenge));
+    }
+
+    public double getGesamtPreis() {
+	return kostenvoranschlag;
     }
 
     /*
@@ -349,11 +353,11 @@ public class Frame1 extends JFrame {
     }
 
     public double getGesamtUtens() {
-	this.calcGesamtUtens();
+
 	return utensGesamt;
     }
 
-    public void calcGesamtflächeFrame1(double fläche) {
+    public void calcGesamtfläche(double fläche) {
 	// this.numberOfRooms += 1;
 	gesamtfläche += fläche;
 	// this.resetFläche();
@@ -388,9 +392,10 @@ public class Frame1 extends JFrame {
 	setLiter(farbmenge);
     }
 
-    public void calcKostenvoranschlagFrame1() {
+    public void calcKostenvoranschlag() {
 	// this.utensilien preis ist sehr hoch
 	calcFarbmengeFrame1();
+	calcGesamtUtens();
 	this.kostenvoranschlag = (this.preisklasse * this.gesamtfläche)
 		+ getGesamtUtens();
 	// Calculate.kostenvoranschlag += utens.getGesamt();
