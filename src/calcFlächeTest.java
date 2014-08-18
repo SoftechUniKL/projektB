@@ -1,10 +1,8 @@
 import static org.junit.Assert.*;
 
-import java.rmi.RemoteException;
-
 import junit.framework.TestCase;
 
-import org.junit.Test;
+import org.junit.*;
 
 
 public class calcFlächeTest{
@@ -18,7 +16,7 @@ public class calcFlächeTest{
 
     // private double output;
 
-    protected void setUp() throws RemoteException {
+    protected void setUp() {
 
 	frame1 = new Frame1();
 	frame2 = new Frame2(frame1);
@@ -29,7 +27,7 @@ public class calcFlächeTest{
 
     }
 
-    protected void tearDown() throws RemoteException {
+    protected void tearDown(){
 
 	frame1 = null;
 	frame2 = null;
@@ -39,8 +37,7 @@ public class calcFlächeTest{
 
     }
 
-    @Test
-    public void testCalcFläche() throws RemoteException {
+    public void testCalcFläche() {
 	setUp();
 
 	frame2.calcFläche(höhe, breite);

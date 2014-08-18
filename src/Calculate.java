@@ -23,6 +23,7 @@ public class Calculate {
     Calculate(Frame1 frame1, Utensilien utens) {
 	this.frame1 = frame1;
 	this.utens = utens;
+	this.fläche = 0;
 
     }
 
