@@ -45,7 +45,7 @@ public class calcFlächeTest{
 
 	frame2.calcFläche(höhe, breite);
 	actualFläche = frame2.getFläche();
-	assertEquals(expectedFläche, actualFläche);
+	assertEquals( expectedFläche, actualFläche, 0,0002);
 	tearDown();
 	/*
 	 * ODER: assertEquals(expectedFläche, frame2.getFläche(), 0.0002
