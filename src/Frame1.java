@@ -14,6 +14,12 @@ import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/*  Die Frame1 Klasse ist für die Auswahl der Preisklasse der Farbe,
+ *  für das Hinzufügen neuer Räume  und für die Auswahl der  Anzahl der utensilien verantwortlich.
+ *  Frame1 greift auf alle Endergebnisse der anderen Klassen zu, um aus ihnen die benötigte Farbmenge 
+ *  und den Kostenvoranschlag zu berechnen.
+ * 
+ */
 public class Frame1 extends JFrame {
 
     double m1 = 0;
