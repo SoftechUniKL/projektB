@@ -13,13 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-/* Die Frame2 Klasse hat Eingabefelder für die Wände und die Raumhöhe und berechnet aus diesen
- * diesen die Fläche der einzelnen Räume. ( Decke optional).
- * Die Fläche wird dann über den "Übernehmen Button" an Frame1 übergeben und dort im "Gesamtfläche in qm"
- * Feld angezeigt.
- * 
- */
-
 public class Frame2 extends JFrame {
 
     JTextField feld1;

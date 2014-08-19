@@ -1,8 +1,3 @@
-/* Die Utensilien Klasse bezieht die Anzahl der einzelnen Utensilien aus Frame1 und berechnet daraus
- * die Preise der einzelnen Utensilien und addiert diese zum Utensilien Gesamtpreis zusammen.
- * 
- */
-
 public class Utensilien {
     Frame1 frame;
 
