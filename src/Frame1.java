@@ -291,8 +291,6 @@ public class Frame1 extends JFrame {
 	setSize(1000, 650);
 	setTitle("Die MalerApp 25");
 
-	// Öffnet neues Fenster und zählt die Anzahl neuer Räume
-
 	/**
 	 * Oeffnet ein neues Fenster fuer das hinzufuegen neuer Raeume
 	 */
@@ -516,5 +514,29 @@ public class Frame1 extends JFrame {
 		+ getGesamtUtens();
 	// Calculate.kostenvoranschlag += utens.getGesamt();
 	setEndprice(this.kostenvoranschlag);
+    }
+
+    // Getter für Testklasse
+    public double getAnzugPreis() {
+	// TODO Auto-generated method stub
+	return preisAnzug;
+    }
+
+    public double getPinselPreis() {
+
+	return preisPinsel;
+    }
+
+    public double getEimerPreis() {
+	return preisEimer;
+    }
+
+    public double getPlanePreis() {
+
+	return preisPlane;
+    }
+
+    public double getRollePreis() {
+	return preisRolle;
     }
 }

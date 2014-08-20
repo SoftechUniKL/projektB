@@ -3,7 +3,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class Frame1Test {
-
+    private double delta = 0.0002;
     private Frame1 frame;
     private double verbrauch;
     private double expectedFarbmenge;
@@ -24,11 +24,22 @@ public class Frame1Test {
     private double mengePlane;
     private double actualGesamtKosten;
     private double expectedGesamtKosten;
+    private int val;
+    private double expectedPreisPlane, expectedPreisEimer, expectedPreisRolle,
+	    expectedPreisAnzug, expectedPreisPinsel;
+    private double actualPreisPlane, actualPreisEimer, actualPreisRolle,
+	    actualPreisAnzug, actualPreisPinsel;
+
+    /*
+     * setUp()-Methoden
+     */
+    protected void SetUpPreisUtensAdd() {
+
+    }
 
     protected void setUp() {
 	frame = new Frame1();
-	verbrauch = 0.177;
-	frame.verbrauch = verbrauch;
+
 	expectedFarbmenge = 8.85;
 	frame.calcFarbmengeFrame1();
 	gesamtfläche = 50;
@@ -43,19 +54,92 @@ public class Frame1Test {
 	frame.preisRolle = 30;
 	expectedUtens = 80;
 	frame.calcGesamtUtens();
+	frame.addAnzugPreis(5);
+	frame.addPinselPreis(3);
+	frame.addEimerPreis(4);
+	frame.addRollePreis(2);
+	frame.addPlanePreis(7);
 
 	expectedGesamtKosten = expectedUtens + gesamtfläche * preisklasse;
+    }
+
+    protected void setUpCase2() {
+	setUp();
+	expectedFarbmenge = 8.3;
+	frame.calcFarbmengeFrame1();
+	gesamtfläche = 50;
+	frame.gesamtfläche = gesamtfläche;
+	preisklasse = 0.5;
+	frame.preisklasse = preisklasse;
+
     }
 
     protected void tearDown() {
 	frame = null;
 	verbrauch = 0;
 	expectedFarbmenge = 0;
+	expectedPreisAnzug = 0;
+	expectedPreisPlane = 0;
+	expectedPreisRolle = 0;
+	expectedPreisEimer = 0;
+	expectedPreisPinsel = 0;
 
     }
 
+    /*
+     * addX()-Methoden
+     */
     @Test
-    public void test() {
+    public void addPreisAnzugTest() {
+	setUp();
+	actualPreisAnzug = frame.getAnzugPreis();
+	expectedPreisAnzug = 17.50;
+	assertEquals(expectedPreisAnzug, actualPreisAnzug, delta);
+	tearDown();
+    }
+
+    @Test
+    public void addPreisPinselTest() {
+	setUp();
+	actualPreisPinsel = frame.getPinselPreis();
+	expectedPreisPinsel = 18;
+	assertEquals(expectedPreisPlane, actualPreisPlane, delta);
+	tearDown();
+    }
+
+    @Test
+    public void addPreisEimer() {
+	setUp();
+	actualPreisEimer = frame.getEimerPreis();
+	expectedPreisEimer = 24;
+	assertEquals(expectedPreisEimer, actualPreisEimer, delta);
+	tearDown();
+    }
+
+    @Test
+    public void addPreisPlane() {
+	setUp();
+	actualPreisEimer = frame.getPlanePreis();
+	expectedPreisEimer = 28;
+	assertEquals(expectedPreisPlane, actualPreisPlane, delta);
+	tearDown();
+    }
+
+    @Test
+    public void addPreisRolle() {
+	setUp();
+	actualPreisRolle = frame.getRollePreis();
+	expectedPreisRolle = 20;
+	assertEquals(expectedPreisRolle, actualPreisRolle, delta);
+
+	tearDown();
+    }
+
+    /*
+     * Restliche Methoden
+     */
+    @Test
+    public void Farbmengentest() {
 	setUp();
 	actualFarbmenge = frame.getMenge();
 	frame.calcFarbmengeFrame1();
@@ -63,6 +147,16 @@ public class Frame1Test {
 	tearDown();
     }
 
+    @Test
+    public void Farbmengentest2() {
+	setUpCase2();
+	actualFarbmenge = frame.getMenge();
+	frame.calcFarbmengeFrame1();
+	assertEquals(expectedFarbmenge, actualFarbmenge, 0.00002);
+	tearDown();
+    }
+
+    @Test
     public void gesamtUtensTest() {
 
 	setUp();

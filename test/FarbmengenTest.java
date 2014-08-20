@@ -25,6 +25,7 @@ public class FarbmengenTest {
 	frame.preisklasse = preisklasse;
     }
 
+    @Test
     protected void tearDown() throws RemoteException {
 	frame = null;
 	verbrauch = 0;

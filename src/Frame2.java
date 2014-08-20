@@ -89,16 +89,16 @@ public class Frame2 extends JFrame {
 	Angabe.setBounds(10, 10, 250, 30);
 	add(Angabe);
 
-	wand1 = new JLabel("Wand 1 in m");
-	wand2 = new JLabel("Wand 2 in m");
-	wand3 = new JLabel("Wand 3 in m");
-	wand4 = new JLabel("Wand 4 in m");
+	wand1 = new JLabel("Querwand 1 in m");
+	wand2 = new JLabel("Querwand 2 in m");
+	wand3 = new JLabel("Längswand 3 in m");
+	wand4 = new JLabel("Längswand 4 in m");
 	height = new JLabel("Raumhöhe in m");
 
-	wand1.setBounds(20, 70, 80, 30);
-	wand2.setBounds(300, 70, 80, 30);
-	wand3.setBounds(20, 170, 80, 30);
-	wand4.setBounds(300, 170, 80, 30);
+	wand1.setBounds(20, 70, 100, 30);
+	wand2.setBounds(300, 70, 100, 30);
+	wand3.setBounds(20, 170, 100, 30);
+	wand4.setBounds(300, 170, 100, 30);
 	height.setBounds(20, 270, 90, 30);
 
 	add(wand1);
@@ -158,37 +158,45 @@ public class Frame2 extends JFrame {
 		    m4 = Double.parseDouble(feld4.getText());
 		    h = Double.parseDouble(feld5.getText());
 
-		    result1 = m1 * h;
-		    result2 = m2 * h;
-		    result3 = m3 * h;
-		    result4 = m4 * h;
+		    // result1 = m1 * h;
+		    // result2 = m2 * h;
+		    // result3 = m3 * h;
+		    // result4 = m4 * h;
+		    if (arePositive()) {
+			if (Top.isSelected()) {
+			    /*
+			     * Ist der Raum rechteckig? Decke=Länge*Breite wenn
+			     * nicht schließe programm
+			     */
 
-		    if (Top.isSelected()) {
-			/*
-			 * Decke erstmal aussen vor. Wenn wirs mit mehreren
-			 * Wänden pro raum noch umsetzen, müssen wir hier eh
-			 * nochmal ran ;)
-			 */
+			    if (isRechteckig()) {
+				calcFläche(m1, m3);// Decke über CalcFläche
+						   // berechnet
+				calcFläche(h, m1);
+				calcFläche(h, m2);
+				calcFläche(h, m3);
+				calcFläche(h, m4);
+			    } else {
+				JOptionPane.showMessageDialog(null,
+					"Die Decke kann nur berechnet werden wenn der Raum"
+						+ " rechteckig ist.",
+					"Achtung", JOptionPane.WARNING_MESSAGE);
+			    }
 
-			// TODO Decke anders implementieren
+			} else {
+			    calcFläche(h, m1);
+			    calcFläche(h, m2);
+			    calcFläche(h, m3);
+			    calcFläche(h, m4);
 
-			calcFläche(m1, m2);// Decke über CalcFläche
-					   // berechnet
-			calcFläche(h, m1);
-			calcFläche(h, m2);
-			calcFläche(h, m3);
-			calcFläche(h, m4);
+			}
 
+			ergebnis.setText(Double.toString(fläche));
 		    } else {
-			calcFläche(h, m1);
-			calcFläche(h, m2);
-			calcFläche(h, m3);
-			calcFläche(h, m4);
-
+			JOptionPane.showMessageDialog(null,
+				"Bitte nur positive Zahlen eingeben.",
+				"Achtung", JOptionPane.WARNING_MESSAGE);
 		    }
-
-		    ergebnis.setText(Double.toString(fläche));
-
 		} catch (Exception NumberFormatException) {
 
 		    ergebnis.setText("Falsches Format");
@@ -275,8 +283,7 @@ public class Frame2 extends JFrame {
 
     // Methoden für Flächenberechnung
     /**
-     * calcFlaeche berechnet die Flaeche eines Raumes, ueber die Hoehe und
-     * Breite
+     * calcFlaeche berechnet die Flaeche einer Wand, ueber die Hoehe und Breite
      */
     public double calcFläche(double height, double width) {
 	return this.fläche += height * width;
@@ -320,4 +327,17 @@ public class Frame2 extends JFrame {
 	this.fläche = fläche;
     }
 
+    public boolean isRechteckig() {
+	if (m1 == m2 && m3 == m4)
+	    return true;
+	else
+	    return false;
+    }
+
+    public boolean arePositive() {
+	if (m1 > 0 && m2 > 0 && m3 > 0 && m4 > 0)
+	    return true;
+	else
+	    return false;
+    }
 }
