@@ -13,6 +13,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+/**
+ * Die Frame2 Klasse hat Eingabefelder fuer die Waende und die Raumhoehe und
+ * berechnet aus diesen diesen die Flaeche der einzelnen Raeume. ( Decke
+ * optional). Die Flaeche wird dann ueber den "Uebernehmen Button" an Frame1
+ * uebergeben und dort im "Gesamtflaeche in qm" Feld angezeigt.
+ * 
+ */
+
 public class Frame2 extends JFrame {
 
     JTextField feld1;
@@ -62,6 +70,10 @@ public class Frame2 extends JFrame {
 
     }
 
+    /**
+     * InitializeNextWindow erstellt das GUI des Frame2, welches fuer das
+     * hinzufuegen neuer Raeume verantwortlich ist.
+     */
     public void InitializeNextWindow() {
 	feld1 = new JTextField();
 	feld2 = new JTextField();
@@ -127,7 +139,15 @@ public class Frame2 extends JFrame {
 	setSize(700, 700);
 	setTitle("Angaben zum Raum");
 	// Berechnet qm
+
 	calculate.addActionListener(new ActionListener() {
+	    /**
+	     * Wenn Berechnen gedrueckt wird werden die Eingaben der einzelnen
+	     * Felder in double zurückgegeben und dann die Flaeche der einzelnen
+	     * Raeume berechnet und im Ergebnis Feld angezeigt. ( Sofern die
+	     * Eingabe ein falsches Format hat gibt es einen Fehler, Decke ist
+	     * optional durch checkbox
+	     */
 	    public void actionPerformed(ActionEvent e) {
 
 		try {
@@ -178,7 +198,13 @@ public class Frame2 extends JFrame {
 	});
 
 	übernehmen.addActionListener(new ActionListener() {
-
+	    /**
+	     * Wenn Berechnen gedrueckt wird werden die Eingaben der einzelnen
+	     * Felder in double zurückgegeben und dann die Flaeche der einzelnen
+	     * Raeume berechnet und im Ergebnis Feld angezeigt. ( Sofern die
+	     * Eingabe ein falsches Format hat gibt es einen Fehler, Decke ist
+	     * optional durch checkbox
+	     */
 	    @Override
 	    public void actionPerformed(ActionEvent e) {
 		if (Double.compare(fläche, 0) == 0) {
@@ -193,8 +219,13 @@ public class Frame2 extends JFrame {
 
 	    }
 	});
-	rückgängig.addActionListener(new ActionListener() {
 
+	rückgängig.addActionListener(new ActionListener() {
+	    /**
+	     * Wenn rueckgaengig gedrueckt wird, erscheint eine erneute Abfrage,
+	     * ob man wirklich die derzeitigen Eingaben loeschen moechte. Wenn
+	     * man Ja drueckt, werden alle Eingaben in den Feldern geloescht.
+	     */
 	    @Override
 	    public void actionPerformed(ActionEvent e) {
 		int n = JOptionPane.showConfirmDialog(null,
@@ -208,8 +239,12 @@ public class Frame2 extends JFrame {
 
 	    }
 	});
-
 	addWindowListener(new WindowAdapter() {
+	    /**
+	     * Wenn man das Fenster vom Nutzer geschlossen wird, kommt es zu
+	     * einer Abfrage, ob man es wirklich tun will und alle Aenderungen
+	     * verwerfen moechte.
+	     */
 	    @Override
 	    public void windowClosing(WindowEvent e) {
 
@@ -228,6 +263,9 @@ public class Frame2 extends JFrame {
 	});
     }
 
+    /**
+     * clearWindow loescht die Eingaben der Felder
+     */
     public void clearWindow() {
 	for (JTextField jtf : this.jtfAList) {
 	    jtf.setText("");
@@ -236,27 +274,48 @@ public class Frame2 extends JFrame {
     }
 
     // Methoden für Flächenberechnung
-
+    /**
+     * calcFlaeche berechnet die Flaeche eines Raumes, ueber die Hoehe und
+     * Breite
+     */
     public double calcFläche(double height, double width) {
 	return this.fläche += height * width;
     }
 
+    /**
+     * resetFlaeche setzt den Wert von fläche auf 0
+     */
     public void resetFläche() {
 	this.fläche = 0;
     }
 
+    /**
+     * setHeight setzt den Wert der Variablen auf die derzeitige Eingabe vom
+     * Nutzer
+     */
     public void setHeight(double höhe) {
 	this.höhe = höhe;
     }
 
+    /**
+     * setWidth setzt den Wert der Variablen auf die derzeitige Eingabe vom
+     * Nutzer
+     * 
+     */
     public void setWidth(double width) {
 	this.width = width;
     }
 
+    /**
+     * getFläche gibt den derzeitigen Wert der fläche wieder
+     */
     public double getFläche() {
 	return this.fläche;
     }
 
+    /**
+     * setFläche legt den lokalen Wert von fläche fest
+     */
     public void setFläche(double fläche) {
 	this.fläche = fläche;
     }

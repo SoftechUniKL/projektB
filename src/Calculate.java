@@ -1,5 +1,12 @@
 public class Calculate {
 
+    /**
+     * Die Calculate class berechnet die Flaeche der Raeume bzw. die
+     * Gesamtflaeche aller Raeume. Daraus wird dann die benoetigte Farbmenge und
+     * deren Preis berechnet. Dieser Preis wird zusammen mit dem Preis fuer die
+     * Utensilien zum Kostenvoranschlag zusammengerechnet
+     */
+
     int numberOfRooms;
     // TODO hashset ode rähnliches mti menge von raum/wand objekten zur
     // berechnung über elemente iterieren
