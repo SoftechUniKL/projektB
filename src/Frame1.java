@@ -39,7 +39,9 @@ public class Frame1 extends JFrame {
     double verbrauch;
     double preisklasse;
 
-    Frame1 thisFrame1 = this;
+    Frame1 thisFrame1 = this; // erleichtert späteres Aufrufen in
+			      // ActionListener, da "this" sich auf AL beziehen
+			      // würde
 
     Frame2 frame2;
     // Doubles für Utensilienmethoden
@@ -194,7 +196,7 @@ public class Frame1 extends JFrame {
 		BorderFactory.createRaisedSoftBevelBorder(), "Utensilien"));
 	utensilien.setBounds(600, 70, 300, 500);
 	getContentPane().add(utensilien);
-	/**
+	/*
 	 * anzug.addChangeListener bezieht die Anzahl der Anzuege aus dem
 	 * JSlider und berechnet daraus den AnzugPreis und den Kostenvoranschlag
 	 */
@@ -206,14 +208,16 @@ public class Frame1 extends JFrame {
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
 		    addAnzugPreis(val);
+		    calcFarbmengeFrame1();
+		    calcGesamtUtens();
 		    calcKostenvoranschlag();
 		}
 	    }
 	});
 
-	/**
+	/*
 	 * plane.addChangeListener bezieht die Anzahl der Planen aus dem JSlider
-	 * und berechnet daraus den AnzugPreis und den Kostenvoranschlag
+	 * und berechnet daraus den PlanePreis und den Kostenvoranschlag
 	 */
 	plane.addChangeListener(new ChangeListener() {
 
@@ -226,14 +230,17 @@ public class Frame1 extends JFrame {
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
 		    addPlanePreis(val);
+		    calcFarbmengeFrame1();
+		    calcGesamtUtens();
 		    calcKostenvoranschlag();
 		}
 	    }
 	});
 
-	/**
+	/*
 	 * Pinsel.addChangeListener bezieht die Anzahl der Pinsel aus dem
-	 * JSlider und berechnet daraus den AnzugPreis und den Kostenvoranschlag
+	 * JSlider und berechnet daraus den PinselPreis und den
+	 * Kostenvoranschlag
 	 */
 	pinsel.addChangeListener(new ChangeListener() {
 
@@ -243,14 +250,16 @@ public class Frame1 extends JFrame {
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
 		    addPinselPreis(val);
+		    calcFarbmengeFrame1();
+		    calcGesamtUtens();
 		    calcKostenvoranschlag();
 		}
 	    }
 	});
 
-	/**
+	/*
 	 * Eimer.addChangeListener bezieht die Anzahl der Eimer aus dem JSlider
-	 * und berechnet daraus den AnzugPreis und den Kostenvoranschlag
+	 * und berechnet daraus den EimerPreis und den Kostenvoranschlag
 	 */
 	eimer.addChangeListener(new ChangeListener() {
 
@@ -260,14 +269,16 @@ public class Frame1 extends JFrame {
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
 		    addEimerPreis(val);
+		    calcFarbmengeFrame1();
+		    calcGesamtUtens();
 		    calcKostenvoranschlag();
 		}
 	    }
 	});
 
-	/**
+	/*
 	 * Rolle.addChangeListener bezieht die Anzahl der Rollen aus dem JSlider
-	 * und berechnet daraus den AnzugPreis und den Kostenvoranschlag
+	 * und berechnet daraus den RollePreis und den Kostenvoranschlag
 	 */
 	rolle.addChangeListener(new ChangeListener() {
 
@@ -277,6 +288,8 @@ public class Frame1 extends JFrame {
 		if (!source.getValueIsAdjusting()) {
 		    int val = (int) source.getValue();
 		    addRollePreis(val);
+		    calcFarbmengeFrame1();
+		    calcGesamtUtens();
 		    calcKostenvoranschlag();
 		}
 	    }
@@ -291,7 +304,7 @@ public class Frame1 extends JFrame {
 	setSize(1000, 650);
 	setTitle("Die MalerApp 25");
 
-	/**
+	/*
 	 * Oeffnet ein neues Fenster fuer das hinzufuegen neuer Raeume
 	 */
 	next.addActionListener(new ActionListener() {
@@ -304,7 +317,7 @@ public class Frame1 extends JFrame {
 	    }
 
 	});
-	/**
+	/*
 	 * low.addActionListener, falls vom Nutzer ausgewaehlt, wird die
 	 * Preisklasse auf 0.3 gesetzt und dann ueber calcFarbmengeFrame1 und
 	 * calcKostenvoranschlag die Farbmenge bzw. der Preis berechnet
@@ -318,13 +331,14 @@ public class Frame1 extends JFrame {
 		if (low.isSelected()) {
 		    preisklasse = 0.3;
 		    calcFarbmengeFrame1();
+		    calcGesamtUtens();
 		    calcKostenvoranschlag();
 		}
 
 	    }
 
 	});
-	/**
+	/*
 	 * low.addActionListener, falls vom Nutzer ausgewaehlt, wird die
 	 * Preisklasse auf 0.5 gesetzt und dann ueber calcFarbmengeFrame1 und
 	 * calcKostenvoranschlag die Farbmenge bzw. der Preis berechnet
@@ -335,12 +349,13 @@ public class Frame1 extends JFrame {
 		if (middle.isSelected()) {
 		    preisklasse = 0.5;
 		    calcFarbmengeFrame1();
+		    calcGesamtUtens();
 		    calcKostenvoranschlag();
 		}
 	    }
 
 	});
-	/**
+	/*
 	 * low.addActionListener, falls vom Nutzer ausgewaehlt, wird die
 	 * Preisklasse auf 0.6 gesetzt und dann ueber calcFarbmengeFrame1 und
 	 * calcKostenvoranschlag die Farbmenge bzw. der Preis berechnet
@@ -351,6 +366,7 @@ public class Frame1 extends JFrame {
 		if (high.isSelected()) {
 		    preisklasse = 0.6;
 		    calcFarbmengeFrame1();
+		    calcGesamtUtens();
 		    calcKostenvoranschlag();
 		}
 	    }
@@ -360,7 +376,8 @@ public class Frame1 extends JFrame {
     }
 
     /**
-     * setSqm wandelt Ergebnis in einen String um und zeigt ihn im sqm Feld an
+     * setSqm wandelt Ergebnis in einen String um und zeigt ihn im sqm Feld an,
+     * wird aufgerufen in calcGesamtfläche()
      */
     public void setSqm(double ergebnis) {
 	sqm.setText(Double.toString(ergebnis));
@@ -368,7 +385,7 @@ public class Frame1 extends JFrame {
 
     /**
      * setEndprice wandelt kostenvoranschlag in einen String um und zeigt ihn im
-     * price Feld an
+     * price Feld an, wird in calcKostenvoranschlag()aufgerufen
      */
     public void setEndprice(double kostenvoranschlag) {
 	price.setText(Double.toString(kostenvoranschlag));
@@ -376,19 +393,11 @@ public class Frame1 extends JFrame {
 
     /**
      * setLiter wandelt farmenge in einen String um und zeigt ihn im liter Feld
-     * an
+     * an, wird in calcFarbmengeFrame1() aufgerufen
      * 
      */
     public void setLiter(double farbmenge) {
 	liter.setText(Double.toString(farbmenge));
-    }
-
-    /**
-     * getGesamtPreis gibt Kostenvoranschlag zurück
-     * 
-     */
-    public double getGesamtPreis() {
-	return kostenvoranschlag;
     }
 
     /*
@@ -437,19 +446,12 @@ public class Frame1 extends JFrame {
 
     /**
      * calcGesamtUtens berechnet den Gesamtpreis der Utensilien aus den
-     * einzelnen addPreis Methoden
+     * einzelnen addPreis Methoden, wird in vielen ActionListenern aufgerufen,
+     * immer vor calcKostenvoranschlag()
      */
     public void calcGesamtUtens() {
 	utensGesamt = preisAnzug + preisPlane + preisPinsel + preisEimer
 		+ preisRolle;
-    }
-
-    /**
-     * getGesamtUtens gibt utensGesamt zurück
-     */
-    public double getGesamtUtens() {
-
-	return utensGesamt;
     }
 
     /**
@@ -465,17 +467,9 @@ public class Frame1 extends JFrame {
     }
 
     /**
-     * getMenge gibt die Farbmenge aus der calcFarbmengeFrame1 Methode wieder.
-     * 
-     */
-    public double getMenge() {
-	this.calcFarbmengeFrame1();
-	return farbmenge;
-    }
-
-    /**
      * calcFarbmengeFrame1 berechnet die benoetigte Farbmenge aus der
-     * Gesamtfläche und aus der ausgewaehlten Preisklasse
+     * Gesamtfläche und aus der ausgewaehlten Preisklasse, wird in vielen ALs
+     * aufgerufen
      * 
      */
     public void calcFarbmengeFrame1() {
@@ -504,39 +498,15 @@ public class Frame1 extends JFrame {
     /**
      * calcKostenvoranschlag berechnet den Kostenvoranschlag aus der
      * Gesamtfläche * Preisklasse der Farbe und addiert die gesamt Kosten der
-     * Utensilien (GesamtUtens) und setzt diesen als "Endprice"
+     * Utensilien (GesamtUtens) und setzt diesen als "Endprice", wird in ALs
+     * aufgerufen
      */
     public void calcKostenvoranschlag() {
 	// this.utensilien preis ist sehr hoch
-	calcFarbmengeFrame1();
-	calcGesamtUtens();
 	this.kostenvoranschlag = (this.preisklasse * this.gesamtfläche)
-		+ getGesamtUtens();
+		+ this.utensGesamt;
 	// Calculate.kostenvoranschlag += utens.getGesamt();
 	setEndprice(this.kostenvoranschlag);
     }
 
-    // Getter für Testklasse
-    public double getAnzugPreis() {
-	// TODO Auto-generated method stub
-	return preisAnzug;
-    }
-
-    public double getPinselPreis() {
-
-	return preisPinsel;
-    }
-
-    public double getEimerPreis() {
-	return preisEimer;
-    }
-
-    public double getPlanePreis() {
-
-	return preisPlane;
-    }
-
-    public double getRollePreis() {
-	return preisRolle;
-    }
 }

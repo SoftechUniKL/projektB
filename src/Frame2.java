@@ -58,7 +58,7 @@ public class Frame2 extends JFrame {
     double höhe;
     double width;
     double verbrauch;
-    private double fläche; // muss an frame1 übergeben werden
+    double fläche; // muss an frame1 übergeben werden
 
     Frame1 frame1;
 
@@ -82,6 +82,7 @@ public class Frame2 extends JFrame {
 	feld5 = new JTextField();
 	ergebnis = new JTextField();
 
+	// CLEAAAAAAARRRRRRR
 	jtfAList = new ArrayList<JTextField>(Arrays.asList(feld1, feld2, feld3,
 		feld4, feld5, ergebnis));
 
@@ -296,37 +297,6 @@ public class Frame2 extends JFrame {
 	this.fläche = 0;
     }
 
-    /**
-     * setHeight setzt den Wert der Variablen auf die derzeitige Eingabe vom
-     * Nutzer
-     */
-    public void setHeight(double höhe) {
-	this.höhe = höhe;
-    }
-
-    /**
-     * setWidth setzt den Wert der Variablen auf die derzeitige Eingabe vom
-     * Nutzer
-     * 
-     */
-    public void setWidth(double width) {
-	this.width = width;
-    }
-
-    /**
-     * getFläche gibt den derzeitigen Wert der fläche wieder
-     */
-    public double getFläche() {
-	return this.fläche;
-    }
-
-    /**
-     * setFläche legt den lokalen Wert von fläche fest
-     */
-    public void setFläche(double fläche) {
-	this.fläche = fläche;
-    }
-
     public boolean isRechteckig() {
 	if (m1 == m2 && m3 == m4)
 	    return true;
@@ -334,10 +304,26 @@ public class Frame2 extends JFrame {
 	    return false;
     }
 
+    public boolean isRechteckig(double m1, double m2, double m3, double m4) {
+	this.m1 = m1;
+	this.m2 = m2;
+	this.m3 = m3;
+	this.m4 = m4;
+	return isRechteckig();
+    }
+
     public boolean arePositive() {
 	if (m1 > 0 && m2 > 0 && m3 > 0 && m4 > 0)
 	    return true;
 	else
 	    return false;
+    }
+
+    public boolean arePositive(double m1, double m2, double m3, double m4) {
+	this.m1 = m1;
+	this.m2 = m2;
+	this.m3 = m3;
+	this.m4 = m4;
+	return arePositive();
     }
 }
