@@ -2,6 +2,10 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+/**
+ * Frame1Test testet die Methoden der Klasse Frame1
+ */
+
 public class Frame1Test {
     private double delta = 0.0002;
     private Frame1 frame;
@@ -25,6 +29,9 @@ public class Frame1Test {
 
     }
 
+    /**
+     * initialisiert die Klassenvariablen und schafft eine Testumgebung
+     */
     protected void setUp() {
 	frame = new Frame1();
 
@@ -52,6 +59,9 @@ public class Frame1Test {
 	expectedGesamtKosten = 95;
     }
 
+    /**
+     * schafft eine Testumgebung mit den initialisierten Variablen
+     */
     protected void setUpCase2() {
 	setUp();
 	expectedFarbmenge = 8.3;
@@ -61,6 +71,9 @@ public class Frame1Test {
 
     }
 
+    /**
+     * schafft eine Testumgebung mit den initialisierten Variablen
+     */
     protected void setUpCase3() {
 	setUp();
 	expectedFarbmenge = 6.65;
@@ -70,6 +83,9 @@ public class Frame1Test {
 
     }
 
+    /**
+     * die zu erwartenden Werte werden auf 0 gesetzt
+     */
     protected void tearDown() {
 	frame = null;
 	expectedFarbmenge = 0;
@@ -85,6 +101,9 @@ public class Frame1Test {
      * addX()-Methoden
      */
     @Test
+    /**
+     *  Testet PreisAnzug auf den richtigen Wert
+     */
     public void addPreisAnzugTest() {
 	setUp();
 	actualPreisAnzug = frame.preisAnzug;
@@ -94,6 +113,9 @@ public class Frame1Test {
     }
 
     @Test
+    /**
+     *  Testet PreisPinsel auf den richtigen Wert
+     */
     public void addPreisPinselTest() {
 	setUp();
 	actualPreisPinsel = frame.preisPinsel;
@@ -103,6 +125,9 @@ public class Frame1Test {
     }
 
     @Test
+    /**
+     *  Testet PreisEimer auf den richtigen Wert
+     */
     public void addPreisEimer() {
 	setUp();
 	actualPreisEimer = frame.preisEimer;
@@ -112,6 +137,9 @@ public class Frame1Test {
     }
 
     @Test
+    /**
+     *  Testet PreisPlane auf den richtigen Wert
+     */
     public void addPreisPlane() {
 	setUp();
 	actualPreisEimer = frame.preisPlane;
@@ -121,6 +149,9 @@ public class Frame1Test {
     }
 
     @Test
+    /**
+     *  Testet PreisRolle auf den richtigen Wert
+     */
     public void addPreisRolle() {
 	setUp();
 	actualPreisRolle = frame.preisRolle;
@@ -134,6 +165,9 @@ public class Frame1Test {
      * Restliche Methoden
      */
     @Test
+    /**
+     * testet Farbmenge auf den richtigen Wert
+     */
     public void Farbmengentest() {
 	setUp();
 	frame.calcFarbmengeFrame1();
@@ -143,6 +177,9 @@ public class Frame1Test {
     }
 
     @Test
+    /**
+     * testet Farbmenge auf den richtigen Wert
+     */
     public void Farbmengentest2() {
 	setUpCase2();
 	frame.calcFarbmengeFrame1();
@@ -152,6 +189,9 @@ public class Frame1Test {
     }
 
     @Test
+    /**
+     * testet Farbmenge auf den richtigen Wert
+     */
     public void FarbmengenTest3() {
 	setUpCase3();
 	frame.calcFarbmengeFrame1();
@@ -161,6 +201,9 @@ public class Frame1Test {
     }
 
     @Test
+    /**
+     * testet gesamtUtens auf den richtigen Wert
+     */
     public void gesamtUtensTest() {
 
 	setUp();
@@ -171,6 +214,9 @@ public class Frame1Test {
     }
 
     @Test
+    /**
+     * testet Kostenvoranschlag auf den richtigen Wert
+     */
     public void calcKostenvoranschlagTest() {
 	setUp();
 	frame.calcKostenvoranschlag();

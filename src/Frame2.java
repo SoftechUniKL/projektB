@@ -58,14 +58,13 @@ public class Frame2 extends JFrame {
     double höhe;
     double width;
     double verbrauch;
-    double fläche; // muss an frame1 übergeben werden
+    double fläche;
 
     Frame1 frame1;
 
     public Frame2(Frame1 frame1) {
 	getContentPane().setLayout(null);
 	this.frame1 = frame1;
-	// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	InitializeNextWindow();
 
     }
@@ -82,7 +81,10 @@ public class Frame2 extends JFrame {
 	feld5 = new JTextField();
 	ergebnis = new JTextField();
 
-	// CLEAAAAAAARRRRRRR
+	/**
+	 * cleart alle Felder von Frame 2
+	 */
+
 	jtfAList = new ArrayList<JTextField>(Arrays.asList(feld1, feld2, feld3,
 		feld4, feld5, ergebnis));
 
@@ -254,6 +256,7 @@ public class Frame2 extends JFrame {
 	     * einer Abfrage, ob man es wirklich tun will und alle Aenderungen
 	     * verwerfen moechte.
 	     */
+
 	    @Override
 	    public void windowClosing(WindowEvent e) {
 
@@ -273,7 +276,7 @@ public class Frame2 extends JFrame {
     }
 
     /**
-     * clearWindow loescht die Eingaben der Felder
+     * clearWindow loescht die Eingaben der Felder durch jtfAList
      */
     public void clearWindow() {
 	for (JTextField jtf : this.jtfAList) {
@@ -284,8 +287,13 @@ public class Frame2 extends JFrame {
 
     // Methoden für Flächenberechnung
     /**
-     * calcFlaeche berechnet die Flaeche einer Wand, ueber die Hoehe und Breite
+     * 
+     * @param height
+     * @param width
+     * @return calcFlaeche berechnet die Flaeche einer Wand, ueber die Hoehe und
+     *         Breite
      */
+
     public double calcFläche(double height, double width) {
 	return this.fläche += height * width;
     }
@@ -297,6 +305,11 @@ public class Frame2 extends JFrame {
 	this.fläche = 0;
     }
 
+    /**
+     * Prüft ob der Raum rechteckig ist.
+     * 
+     * @return true falls m1 == m2 und m3 == m4, ansonsten false
+     */
     public boolean isRechteckig() {
 	if (m1 == m2 && m3 == m4)
 	    return true;
@@ -304,6 +317,14 @@ public class Frame2 extends JFrame {
 	    return false;
     }
 
+    /**
+     * 
+     * @param m1
+     * @param m2
+     * @param m3
+     * @param m4
+     * @return Raum ist Rechteckig
+     */
     public boolean isRechteckig(double m1, double m2, double m3, double m4) {
 	this.m1 = m1;
 	this.m2 = m2;
@@ -312,6 +333,11 @@ public class Frame2 extends JFrame {
 	return isRechteckig();
     }
 
+    /**
+     * Prüft ob die Eingaben größer 0 sind.
+     * 
+     * @return true falls > 0, ansonsten false
+     */
     public boolean arePositive() {
 	if (m1 > 0 && m2 > 0 && m3 > 0 && m4 > 0)
 	    return true;
@@ -319,6 +345,14 @@ public class Frame2 extends JFrame {
 	    return false;
     }
 
+    /**
+     * 
+     * @param m1
+     * @param m2
+     * @param m3
+     * @param m4
+     * @return die Variablen sind positiv.
+     */
     public boolean arePositive(double m1, double m2, double m3, double m4) {
 	this.m1 = m1;
 	this.m2 = m2;

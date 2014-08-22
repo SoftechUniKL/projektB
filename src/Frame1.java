@@ -221,9 +221,6 @@ public class Frame1 extends JFrame {
 	 */
 	plane.addChangeListener(new ChangeListener() {
 
-	    // TODO aus jedem jslider spearat preis rausholen, dann eine Methode
-	    // die die 5 Preise entgegennimmt
-	    // und zusammenaddiert und DANN übergibt
 	    @Override
 	    public void stateChanged(ChangeEvent e) {
 		JSlider source = (JSlider) e.getSource();
@@ -378,7 +375,10 @@ public class Frame1 extends JFrame {
     /**
      * setSqm wandelt Ergebnis in einen String um und zeigt ihn im sqm Feld an,
      * wird aufgerufen in calcGesamtfläche()
+     * 
+     * @param ergebnis
      */
+
     public void setSqm(double ergebnis) {
 	sqm.setText(Double.toString(ergebnis));
     }
@@ -386,7 +386,10 @@ public class Frame1 extends JFrame {
     /**
      * setEndprice wandelt kostenvoranschlag in einen String um und zeigt ihn im
      * price Feld an, wird in calcKostenvoranschlag()aufgerufen
+     * 
+     * @param kostenvoranschlag
      */
+
     public void setEndprice(double kostenvoranschlag) {
 	price.setText(Double.toString(kostenvoranschlag));
     }
@@ -395,7 +398,9 @@ public class Frame1 extends JFrame {
      * setLiter wandelt farmenge in einen String um und zeigt ihn im liter Feld
      * an, wird in calcFarbmengeFrame1() aufgerufen
      * 
+     * @param farbmenge
      */
+
     public void setLiter(double farbmenge) {
 	liter.setText(Double.toString(farbmenge));
     }
@@ -407,6 +412,8 @@ public class Frame1 extends JFrame {
     /**
      * addAnzugPreis berechnet den derzeitigen Preis der Anzuege aus der
      * ausgewaehlten Anzahl des Jsliders.
+     * 
+     * @param val
      */
     public void addAnzugPreis(int val) {
 	this.preisAnzug = val * 3.50;
@@ -415,6 +422,8 @@ public class Frame1 extends JFrame {
     /**
      * addPlanePreis berechnet den derzeitigen Preis der Planen aus der
      * ausgewaehlten Anzahl des Jsliders.
+     * 
+     * @param val
      */
     public void addPlanePreis(int val) {
 	this.preisPlane = val * 4;
@@ -423,6 +432,8 @@ public class Frame1 extends JFrame {
     /**
      * addAPinselPreis berechnet den derzeitigen Preis der Pinsel aus der
      * ausgewaehlten Anzahl des Jsliders.
+     * 
+     * @param val
      */
     public void addPinselPreis(int val) {
 	this.preisPinsel = val * 6;
@@ -431,7 +442,10 @@ public class Frame1 extends JFrame {
     /**
      * addEimerPreis berechnet den derzeitigen Preis der Eimer aus der
      * ausgewaehlten Anzahl des Jsliders.
+     * 
+     * @param val
      */
+
     public void addEimerPreis(int val) {
 	this.preisEimer = val * 6;
     }
@@ -439,7 +453,10 @@ public class Frame1 extends JFrame {
     /**
      * addRollePreis berechnet den derzeitigen Preis der Rollen aus der
      * ausgewaehlten Anzahl des Jsliders.
+     * 
+     * @param val
      */
+
     public void addRollePreis(int val) {
 	this.preisRolle = val * 10;
     }
@@ -449,6 +466,7 @@ public class Frame1 extends JFrame {
      * einzelnen addPreis Methoden, wird in vielen ActionListenern aufgerufen,
      * immer vor calcKostenvoranschlag()
      */
+
     public void calcGesamtUtens() {
 	utensGesamt = preisAnzug + preisPlane + preisPinsel + preisEimer
 		+ preisRolle;
@@ -458,7 +476,9 @@ public class Frame1 extends JFrame {
      * calcGesamtfläche berechnet die Gesamtfläche der Räume indem die Fläche
      * des neuen Raums zu der des alten Raums hinzugefügt wird.
      * 
+     * @param fläche
      */
+
     public void calcGesamtfläche(double fläche) {
 	// this.numberOfRooms += 1;
 	gesamtfläche += fläche;
